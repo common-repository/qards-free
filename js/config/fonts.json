@@ -1,0 +1,30 @@
+{
+    "family": {
+        "webFonts": {
+            "Courier New": "\"Courier New\", Courier, monospace",
+            "Georgia": "Georgia, serif",
+            "Helvetica Neue": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+            "Tahoma": "Tahoma, Geneva, sans-serif",
+            "Times New Roman": "\"Times New Roman\", Times, serif",
+            "Trebuchet MS": "\"Trebuchet MS\", Helvetica, sans-serif"
+        },
+        "googleFonts": {
+            "Arimo": "Arimo, sans-serif",
+            "Istok Web": "\"Istok Web\", sans-serif",
+            "Lato": "\"Lato, sans-serif",
+            "Montserrat": "\"Montserrat\", sans-serif",
+            "Nobile": "Nobile, sans-serif",
+            "Nunito": "Nunito, sans-serif",
+            "Open Sans": "\"Open Sans\", sans-serif",
+            "PT Sans": "\"PT Sans\", sans-serif",
+            "PT Serif": "\"PT Serif\", serif",
+            "Raleway": "Raleway, sans-serif",
+            "Roboto": "Roboto, sans-serif",
+            "Roboto Condensed": "\"Roboto Condensed\", serif",
+            "Roboto Slab": "\"Roboto Slab\", serif",
+            "Source Sans Pro": "\"Source Sans Pro\", sans-serif",
+            "Ubuntu": "Ubuntu, sans-serif"
+        },
+        "localFonts": {}
+    }
+}

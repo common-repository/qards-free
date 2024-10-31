@@ -1,0 +1,87 @@
+{
+    "media": {
+        "show": "image",
+        "image": {
+            "src": {
+                "small": "templates\/ui-kit-feature\/img\/fuji.jpg",
+                "base": "templates\/ui-kit-feature\/img\/fuji.jpg"
+            },
+            "url": ""
+        },
+        "video": {
+            "id": "",
+            "autoplay": false,
+            "controls": false
+        }
+    },
+    "title": {
+        "content": [
+            {
+                "tagName": "h1",
+                "html": "Fuji X10 Review",
+                "style": {
+                    "color": "#424242",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-weight": "bold",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Write title"
+    },
+    "hero": {
+        "content": [
+            {
+                "tagName": "p",
+                "html": "The Fujifilm X10 is the company's first entry into what is becoming an increasingly crowded enthusiast compact camera segment.",
+                "style": {
+                    "color": "#6c6c6c",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "hero",
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Write your message here..."
+    },
+    "size": {
+        "index": "2",
+        "class": "large"
+    },
+    "position": {
+        "index": "4",
+        "class": "right"
+    },
+    "layout": {
+        "header": {
+            "label": "Show Header",
+            "value": true
+        },
+        "hero": {
+            "label": "Show Hero",
+            "value": true
+        }
+    },
+    "block_bg": {
+        "color": "#ffffff",
+        "opacity": "1",
+        "image": "",
+        "gradient": "",
+        "gradient_type": "default",
+        "angle": "90",
+        "type": "color"
+    },
+    "paddings": {
+        "top": 12,
+        "bottom": 4
+    },
+    "anchor": ""
+}

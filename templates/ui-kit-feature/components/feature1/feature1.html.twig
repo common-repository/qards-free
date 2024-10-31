@@ -1,0 +1,247 @@
+<div
+    class="dm-template dm-feature"
+    {% if wp_mode %}
+        dm-template="feature.feature1"
+        component-id="{{ component_id }}"
+        {% if edit_mode is empty and anchor %} id="{{ anchor }}"{% endif %}
+    {% endif %}>
+    {% if edit_mode %}
+        <section
+            dm-feature
+            class="feature"
+            top-padding-old bottom-padding-old
+            dm-padding-draggable-top
+            dm-padding-draggable-bottom
+            ng-class="getClassString(data)">
+            <div
+                ng-if="data.block_bg.type == 'image'"
+                class="section-bg section-image"
+                ng-style="{'background-image': 'url({{ pluginUrl }}' + data.block_bg.image + ')' }"></div>
+            <div
+                ng-if="data.block_bg.type == 'color'"
+                class="section-bg section-color"
+                ng-style="{'background-color': data.block_bg.color, 'opacity': data.block_bg.opacity}"></div>
+            <div ng-if="data.block_bg.type == 'gradient'">
+                <div
+                    ng-if="!data.block_bg.gradient[2]"
+                    class="section-bg section-gradient"
+                    ng-style="{
+                        'background': 'linear-gradient(' + data.block_bg.angle + 'deg,  ' + data.block_bg.gradient[0].color + ' ' + data.block_bg.gradient[0].x + '%, ' + data.block_bg.gradient[1].color + ' ' + data.block_bg.gradient[1].x + '%)'
+                    }"></div>
+                <div
+                    ng-if="data.block_bg.gradient[2]"
+                    class="section-bg section-gradient"
+                    ng-style="{
+                        'background': 'linear-gradient(' + data.block_bg.angle + 'deg,  ' + data.block_bg.gradient[0].color + ' ' + data.block_bg.gradient[0].x + '%, ' + data.block_bg.gradient[1].color + ' ' + data.block_bg.gradient[1].x + '%, ' + data.block_bg.gradient[2].color + ' ' + data.block_bg.gradient[2].x + '%)'
+                    }"></div>
+            </div>
+            <div class="container">
+                <ul>
+                    <li ng-if="data.position.index == '2' || data.position.index == '4'" ng-show="data.layout.header.value || data.layout.hero.value">
+                        <div class="text-container">
+                            <div text-editing
+                                 text-editing-default-paragraph="h1"
+                                 text-editing-include="[paragraphs, bold, italic, heading, justify, anchor, color, fonts]"
+                                 ng-model="data.title"
+                                 ng-show="data.layout.header.value">
+                            </div>
+                            <div text-editing
+                                 text-editing-default-paragraph="hero"
+                                 text-editing-include="[paragraphs, bold, italic, heading, justify, anchor, color, fonts]"
+                                 ng-model="data.hero"
+                                 ng-show="data.layout.hero.value">
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="image-container" dm-feature-item="data.media.show">
+                            <div
+                                dm-media-preloader
+                                class="img-wrapper droppable-media-holder">
+                                <div
+                                    dm-image-width="{
+                                        'small': '8',
+                                        'base': '2400'
+                                    }"
+                                    dm-media-show="data.media.show"
+                                    dm-drop-image="data.media.image.src.base">
+                                </div>
+                                <img ng-show="data.media.show === 'image'" ng-src="{{ pluginUrl }}[[ data.media.image.src.base ]]" alt="" />
+                                <div ng-if="data.media.show === 'video'" class="video-player editor">
+                                    <iframe
+                                        dm-video-player="data.media.video.id"
+                                        frameborder="0"
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                                
+                                <div class="dm-widget dm-widget-animate" data-html2canvas-ignore ng-class="{'smallWidget': data.position.index != 1 && data.position.index != 2}">
+    <div class="dm-widget-item" dm-widget-drop-down>
+        <div dm-upload-media>
+            <div dm-upload-drop-down-image>
+                <div dm-wp-media-library
+                     dm-media-show="data.media.show"
+                     dm-selected-image="data.media.image.src.base">
+                </div>
+            </div>
+            <div dm-upload-drop-down-video>
+                <div
+                    dm-upload-video="data.media.video.id"
+                    dm-upload-video-controls="data.media.video.controls"
+                    dm-upload-video-autoplay="data.media.video.autoplay"
+                    dm-media-show="data.media.show">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dm-widget-item" dm-widget-drop-down ng-if="data.position.index == 1 || data.position.index == 2">
+        <div dm-feature-image-size="data.size"></div>
+    </div>
+    <div ng-show="data.media.show === 'image'" class="dm-widget-item" dm-widget-drop-down>
+        <div dm-image-link="data.media.image.url"></div>
+    </div>
+</div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li ng-if="data.position.index == '1' || data.position.index == '3'" ng-show="data.layout.header.value || data.layout.hero.value">
+                        <div class="text-container">
+                            <div text-editing
+                                 text-editing-default-paragraph="h1"
+                                 text-editing-include="[paragraphs, bold, italic, heading, justify, anchor, color, fonts]"
+                                 ng-model="data.title"
+                                 ng-show="data.layout.header.value">
+                            </div>
+                            <div text-editing
+                                 text-editing-default-paragraph="hero"
+                                 text-editing-include="[paragraphs, bold, italic, heading, justify, anchor, color, fonts]"
+                                 ng-model="data.hero"
+                                 ng-show="data.layout.hero.value">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    {% else %}
+        <section class="feature top-padding-{{ paddings.top }} bottom-padding-{{ paddings.bottom }} {% if position.index == '1' or position.index == '2' %}vertical{% else %}horizontal{% endif %} {{ size.class }}">
+            {% if block_bg.type == 'image' %}
+                <div
+                    class="section-bg section-image"
+                    style="background-image: url({{ pluginUrl }}{{ block_bg.image }});"></div>
+            {% elseif block_bg.type == 'color' %}
+                <div
+                    class="section-bg section-color"
+                    style="background-color: {{ block_bg.color }}; opacity: {{ block_bg.opacity }};"></div>
+            {% elseif block_bg.type == 'gradient' %}
+                {% if block_bg.gradient[2] %}
+                    <div
+                        class="section-bg section-gradient"
+                        style="
+                            background: linear-gradient({{ block_bg.angle }}deg, {{ block_bg.gradient[0].color }} {{ block_bg.gradient[0].x }}%, {{ block_bg.gradient[1].color }} {{ block_bg.gradient[1].x }}%, {{ block_bg.gradient[2].color }} {{ block_bg.gradient[2].x }}%);
+                        "></div>
+                {% else %}
+                    <div
+                        class="section-bg section-gradient"
+                        style="
+                            background: linear-gradient({{ block_bg.angle }}deg, {{ block_bg.gradient[0].color }} {{ block_bg.gradient[0].x }}%, {{ block_bg.gradient[1].color }} {{ block_bg.gradient[1].x }}%);
+                        "></div>
+                {% endif %}
+            {% endif %}
+            <div class="container">
+                <ul>
+                    {% if position.index == '2' or position.index == '4' %}
+                        {% if layout.header.value or layout.hero.value %}
+                            <li>
+                                <div class="text-container">
+                                    {% if layout.header.value %}
+                                        {% for el in title.content %}
+                                            <{{ el.tagName }}
+                                                    style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                                                    class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                                                {{ el.html }}
+                                            </{{ el.tagName }}>
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% if layout.hero.value %}
+                                        {% for el in hero.content %}
+                                            <{{ el.tagName }}
+                                                    style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                                                    class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                                                {{ el.html }}
+                                            </{{ el.tagName }}>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                    <li>
+                        <div class="image-container">
+                            {% if media.show == 'image' %}
+                                {% if media.image.url %}
+                                    <a href="{{ media.image.url }}">
+                                        <img src="{{ pluginUrl }}{{ media.image.src.base }}" alt="Name" />
+                                    </a>
+                                {% else %}
+                                    <img src="{{ pluginUrl }}{{ media.image.src.base }}" alt="Name" />
+                                {% endif %}
+                            {% endif %}
+                            {% if media.show == 'video' %}
+                                <div class="video-player">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/{{ media.video.id }}?rel=0&controls={% if media.video.controls %}1{% else %}0{% endif %}&showinfo=0&autohide=1&hd=1&autoplay={{ media.video.autoplay }}"
+                                        frameborder="0"
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </li>
+                    {% if position.index == '1' or position.index == '3' %}
+                        {% if layout.header.value or layout.hero.value %}
+                            <li>
+                                <div class="text-container">
+                                    {% if layout.header.value %}
+                                        {% for el in title.content %}
+                                            <{{ el.tagName }}
+                                                    style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                                                    class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                                                {{ el.html }}
+                                            </{{ el.tagName }}>
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% if layout.hero.value %}
+                                        {% for el in hero.content %}
+                                            <{{ el.tagName }}
+                                                    style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                                                    class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                                                {{ el.html }}
+                                            </{{ el.tagName }}>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+            </div>
+        </section>
+    {% endif %}
+    {% if edit_mode %}
+        <div class="dm-widget-main align-center" data-html2canvas-ignore>
+            <div class="dm-widget">
+                <div class="dm-widget-item dm-feature-layout" dm-widget-drop-down>
+                    <div dm-feature-layout="data.layout" dm-feature-layout-type="data.media.show" dm-feature-size="data.size" dm-feature-position="data.position"></div>
+                </div>
+                <div class="dm-widget-item dm-bg-options" dm-widget-drop-down>
+                    <div dm-bg-options="['opacity', 'color', 'gradient', 'image', 'navigation']" dm-bg-options-color="data.block_bg.color" dm-bg-options-opacity="data.block_bg.opacity" dm-bg-options-image="data.block_bg.image" dm-bg-options-gradient="data.block_bg.gradient" dm-bg-options-gradient-type="data.block_bg.gradient_type" dm-bg-options-type="data.block_bg.type" dm-bg-options-angle="data.block_bg.angle"></div>
+                </div>
+                <div class="dm-widget-item" dm-widget-drop-down>
+                    <div dm-tools='["move", "duplicate", "appearance", "customCSS", "remove", "anchor"]' anchor-value="data.anchor" top-padding="data.paddings.top" bottom-padding="data.paddings.bottom"></div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>

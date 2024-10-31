@@ -1,0 +1,34 @@
+<div class="dm-widget-main align-center" data-html2canvas-ignore>
+    <div class="dm-widget">
+        <div class="dm-widget-item" dm-widget-drop-down>
+            <div dm-upload-media>
+              <div dm-wp-media-library
+                   dm-media-show="data.media.show"
+                   dm-selected-image="data.media.image.src.base">
+              </div>
+            </div>
+        </div>
+        <div class="dm-widget-item" dm-widget-drop-down>
+            <div dm-image-layout="data.media.image.layout"></div>
+        </div>
+        <div class="dm-widget-item" dm-image-align="data.media.image.align" ng-show="data.media.image.layout == 'small'"></div>
+        <div class="dm-widget-item" dm-widget-drop-down>
+            <div dm-image-link="data.media.image.url"></div>
+        </div>
+        <div class="dm-widget-item dm-bg-options hidden-widget" dm-widget-drop-down>
+            <div
+              dm-bg-options="['opacity', 'color', 'gradient', 'image', 'navigation']"
+              dm-bg-options-color="data.block_bg.color"
+              dm-bg-options-opacity="data.block_bg.opacity"
+              dm-bg-options-image="data.block_bg.image"
+              dm-bg-options-gradient="data.block_bg.gradient"
+              dm-bg-options-gradient-type="data.block_bg.gradient_type"
+              dm-bg-options-type="data.block_bg.type"
+              dm-bg-options-angle="data.block_bg.angle">
+              </div>
+        </div>
+        <div class="dm-widget-item" dm-widget-drop-down>
+            <div dm-tools='["move", "duplicate", "appearance", "customCSS", "remove", "anchor"]' anchor-value="data.anchor" top-padding="data.paddings.top" bottom-padding="data.paddings.bottom"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="dm-widget dm-widget-animate" data-html2canvas-ignore ng-class="{'smallWidget': data.position.index != 1 && data.position.index != 2}">
+    <div class="dm-widget-item" dm-widget-drop-down>
+        <div dm-upload-media>
+            <div dm-upload-drop-down-image>
+                <div dm-wp-media-library
+                     dm-media-show="data.media.show"
+                     dm-selected-image="data.media.image.src.base">
+                </div>
+            </div>
+            <div dm-upload-drop-down-video>
+                <div
+                    dm-upload-video="data.media.video.id"
+                    dm-upload-video-controls="data.media.video.controls"
+                    dm-upload-video-autoplay="data.media.video.autoplay"
+                    dm-media-show="data.media.show">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dm-widget-item" dm-widget-drop-down ng-if="data.position.index == 1 || data.position.index == 2">
+        <div dm-feature-image-size="data.size"></div>
+    </div>
+    <div ng-show="data.media.show === 'image'" class="dm-widget-item" dm-widget-drop-down>
+        <div dm-image-link="data.media.image.url"></div>
+    </div>
+</div>

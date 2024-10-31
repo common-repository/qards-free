@@ -1,0 +1,153 @@
+<div class="dm-template dm-tpl-cover-ng" {% if wp_mode %}dm-template="cover.cover12" component-id="{{ component_id }}"{% if edit_mode is empty and anchor %} id="{{ anchor }}"{% endif %}{% endif %}>
+    <section {% if edit_mode %}dm-cover-ng dm-media-preloader class="dm-cover-ng droppable-media-holder oh"{% else %}class="dm-cover-ng oh{% if media.video.id %} video youtube{% endif %}"{% endif %}>
+        {% if edit_mode %}
+            <div
+                    dm-image-width="{
+                    'small': '8',
+                    'base': '2400'
+                }"
+                    dm-media-show="data.media.show"
+                    dm-drop-image="data.media.bg_image.src.base">
+            </div>
+        {% endif %}
+        <div class="dm-content">
+            <div class="dm-ng-side dm-side-left" {% if edit_mode %} ng-style="{'background-color': data.side_color.color}"{% else %} style="background-color: {{ side_color.color }}"{% endif %}>
+                <div class="dm-side-content">
+                    {% if edit_mode %}
+                        <div
+                                text-editing-e
+                                class="heading"
+                                text-editing-include="[paragraphs, heading, bold, italic, underline, list, quote, justify, link, color, fonts, textTransform]"
+                                ng-model="data.text.content">
+                        </div>
+                    {% else %}
+                        {{ text.content}}
+                    {% endif %}
+                </div>
+                <div class="dm-side-buttons">
+                    {% if edit_mode %}
+                        <div class="dm-button-wrapper first-button"
+                             button-editing
+                             button-editing-include="[bold, italic, justify, anchor, color, fonts, border]"
+                             button-editing-is-button="true"
+                             ng-model="data.button"
+                             ng-show="data.layout.button.value"></div>
+                    {% else %}
+                        {% if layout.button.value %}
+                            <div style="{% for s, v in button['content-style'] %}{{ s }}: {{ v }}; {% endfor %}" class="dm-button-wrapper first-button">
+                                <a
+                                        class="dm-button {% if button['button-style'] %}button stroke{% endif %} {% for c in button.classes %} {{ c }} {% endfor %}"
+                                        style="{% for s, v in button['button-style'] %}{{ s }}: {{ v }}; {% endfor %}"
+                                        href="{{ button.url }}"
+                                        {% if button.target %} target="_blank" {% endif %}>
+                                    {{ button.content }}
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    {% if edit_mode %}
+                        <div class="dm-button-wrapper second-button"
+                             button-editing
+                             button-editing-include="[bold, italic, justify, anchor, color, fonts, border]"
+                             button-editing-is-button="true"
+                             ng-model="data.button2"
+                             ng-show="data.layout.button2.value"></div>
+                    {% else %}
+                        {% if layout.button2.value %}
+                            <div style="{% for s, v in button2['content-style'] %}{{ s }}: {{ v }}; {% endfor %}" class="dm-button-wrapper second-button">
+                                <a
+                                        class="dm-button {% if button2['button-style'] %}button stroke{% endif %} {% for c in button2.classes %} {{ c }} {% endfor %}"
+                                        style="{% for s, v in button2['button-style'] %}{{ s }}: {{ v }}; {% endfor %}"
+                                        href="{{ button2.url }}"
+                                        {% if button2.target %} target="_blank" {% endif %}>
+                                    {{ button2.content }}
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+
+
+            </div>
+        </div>
+        <div class="dm-background">
+            <div class="dm-background-wrap">
+                {% if edit_mode %}
+                    <div class="dm-background-image" ng-show="data.media.show === 'image' " ng-style="{'background-image': 'url({{ pluginUrl }}' + data.media.bg_image.src.base + ')'}" ></div>
+                    <div class="dm-background-video video-background" ng-show="data.media.show === 'video'" data-property="{
+                            videoURL: '[[ data.media.video.id ]]',
+                            quality: '[[ data.media.video.quality ]]',
+                            startAt: [[ data.media.video.startAt ]],
+                            stopAt: [[ data.media.video.stopAt ]]
+                        }">
+                    </div>
+                    <div class="dm-background-overlay" ng-style="{'background-color': data.block_bg.color, 'opacity': data.block_bg.opacity }"></div>
+
+                {% else %}
+                    {% if media.show == 'image' %}
+                        <div class="dm-background-image" style="background-image: url({{ pluginUrl }}{{ media.bg_image.src.base }})"></div>
+                    {% endif %}
+                    {% if media.show == 'video' %}
+                    <div class="dm-background-video "
+                         data-property="{
+                        videoURL: '{{ media.video.id }}',
+                        quality: '{{ media.video.quality }}',
+                        startAt: {{ media.video.startAt }},
+                        stopAt: {{ media.video.stopAt }}
+                    }"
+                         style="background-image: url({{ pluginUrl }}{{ media.video.firstFrame }});"></div>
+                    {% endif %}
+                    <div class="dm-background-overlay" style="background-color: {{ block_bg.color }}; opacity: {{ block_bg.opacity }}"></div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    {% if edit_mode %}
+        <div class="dm-widget-main align-center" data-html2canvas-ignore ng-class="{'hide-opacity-widget': !data.media.bg_image.src.base || data.media.bg_image.src.base == 'img/1x1.png'}">
+            <div class="dm-widget">
+                <div class="dm-widget-item" dm-widget-drop-down>
+                    <div dm-upload-media>
+                        <div dm-upload-drop-down-image>
+                            <div dm-wp-media-library
+                                 dm-media-show="data.media.show"
+                                 dm-selected-image="data.media.bg_image.src.base">
+                            </div>
+                        </div>
+                        <div dm-upload-drop-down-video>
+                            <div
+                                    dm-upload-video="data.media.video.id"
+                                    dm-upload-video-quality="data.media.video.quality"
+                                    dm-upload-video-first-frame="data.media.video.firstFrame"
+                                    dm-upload-video-first-frame-image-width="{'base': '2400'}"
+                                    dm-upload-video-start-at="data.media.video.startAt"
+                                    dm-upload-video-stop-at="data.media.video.stopAt"
+                                    dm-media-show="data.media.show">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dm-widget-item dm-cover-layout dm-cover-layout-new" dm-widget-drop-down>
+                    <div dm-cover-layout-new="data.layout"></div>
+                </div>
+                <div class="dm-widget-item dm-bg-options" dm-widget-drop-down>
+                    <div dm-bg-options="['opacity', 'color']" dm-bg-options-color="data.block_bg.color" dm-bg-options-opacity="data.block_bg.opacity" dm-bg-options-type="data.block_bg.type"></div>
+                </div>
+                {# <div class="dm-widget-item dm-bg-options hidden-widget" dm-widget-drop-down>
+                    <div dm-bg-color="data.side_color.color"></div>
+                </div>#}
+                <div class="dm-widget-item" dm-widget-drop-down>
+                    <div dm-tools='["move", "duplicate", "customCSS", "anchor",  "remove"]' anchor-value="data.anchor"></div>
+                </div>
+            </div>
+        </div>
+        <div class="dm-widget-main align-left" data-html2canvas-ignore style="margin-left: 20%;width: 100px;z-index:10;">
+            <div class="dm-widget">
+                <div class="dm-widget-item dm-bg-options" dm-widget-drop-down>
+                    <div dm-bg-color="data.side_color.color"></div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+

@@ -1,0 +1,87 @@
+{
+    "media": {
+        "show": "image",
+        "image": {
+            "src": {
+                "small": "templates\/ui-kit-feature\/img\/tree-small.jpg",
+                "base": "templates\/ui-kit-feature\/img\/tree.jpg"
+            },
+            "url": ""
+        },
+        "video": {
+            "id": "",
+            "autoplay": false,
+            "controls": false
+        }
+    },
+    "title": {
+        "content": [
+            {
+                "tagName": "h1",
+                "html": "Alamo Motel",
+                "style": {
+                    "color": "#424242",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-weight": "bold",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Write title"
+    },
+    "hero": {
+        "content": [
+            {
+                "tagName": "p",
+                "html": "As the provincial highways and the United States highway system began to develop in the 1920s, long-distance road journeys became more common.",
+                "style": {
+                    "color": "#6c6c6c",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "hero",
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Write your message here..."
+    },
+    "size": {
+        "index": "1",
+        "class": "small"
+    },
+    "position": {
+        "index": "1",
+        "class": "top"
+    },
+    "layout": {
+        "header": {
+            "label": "Show Header",
+            "value": true
+        },
+        "hero": {
+            "label": "Show Hero",
+            "value": true
+        }
+    },
+    "block_bg": {
+        "color": "#ffffff",
+        "opacity": "1",
+        "image": "",
+        "gradient": "",
+        "gradient_type": "default",
+        "angle": "90",
+        "type": "color"
+    },
+    "paddings": {
+        "top": 12,
+        "bottom": 4
+    },
+    "anchor": ""
+}

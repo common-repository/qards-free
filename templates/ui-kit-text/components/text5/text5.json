@@ -1,0 +1,71 @@
+{
+    "title": {
+        "content": [
+            {
+                "tagName": "h1",
+                "html": "The Rabbit Hole",
+                "style": {
+                    "color": "#424242",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-weight": "bold",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            },
+            {
+                "tagName": "p",
+                "html": "She follows it down a rabbit hole when she falls a long way to a curious hall with locked doors.",
+                "style": {
+                    "color": "#6c6c6c",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "hero",
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Write your message here..."
+    },
+    "button": {
+        "content": "Take a look",
+        "url": "",
+        "content-style": {
+            "text-align": "center",
+            "font-family": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "color": "#FFF"
+        },
+        "button-style": {
+            "border-width": "0",
+            "border-style": "solid",
+            "border-color": "#11A1EC",
+            "background-color": "#11A1EC",
+            "border-radius": "45px"
+        },
+        "classes": [
+            "font-size-1",
+            "line-height-4"
+        ],
+        "target": false,
+        "placeholder": "Enter button text here..."
+    },
+    "block_bg": {
+        "color": "#ffffff",
+        "opacity": "1",
+        "image": "",
+        "gradient": "",
+        "gradient_type": "default",
+        "angle": "90",
+        "type": "color"
+    },
+    "paddings": {
+        "top": 12,
+        "bottom": 2
+    },
+    "anchor": ""
+}

@@ -1,0 +1,212 @@
+#dm-parent #dm-wrapper #dm-inner *,
+#dm-parent #dm-wrapper #dm-inner a {
+  -webkit-font-smoothing: antialiased;
+  background-attachment: initial;
+  background-clip: initial;
+  background-color: initial;
+  background-image: initial;
+  background-origin: initial;
+  background-size: initial;
+  border-bottom-color: initial;
+  border-bottom-left-radius: initial;
+  border-bottom-right-radius: initial;
+  border-bottom-style: initial;
+  border-bottom-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  border-image-slice: initial;
+  border-image-source: initial;
+  border-image-width: initial;
+  border-left-color: initial;
+  border-left-style: initial;
+  border-left-width: initial;
+  border-right-color: initial;
+  border-right-style: initial;
+  border-right-width: initial;
+  border-top-color: initial;
+  border-top-left-radius: initial;
+  border-top-right-radius: initial;
+  border-top-style: initial;
+  border-top-width: initial;
+  box-shadow: initial;
+  -moz-box-sizing: initial;
+       box-sizing: initial;
+  color: inherit;
+  cursor: initial;
+  font-family: inherit;
+  font-stretch: initial;
+  font-style: initial;
+  font-size: inherit;
+  font-variant: initial;
+  font-weight: initial;
+  height: initial;
+  line-height: initial;
+  list-style-image: none;
+  list-style-position: initial;
+  list-style-type: none;
+  margin-bottom: initial;
+  margin-left: initial;
+  margin-right: initial;
+  margin-top: initial;
+  max-width: initial;
+  min-height: initial;
+  opacity: initial;
+  outline: initial;
+  outline-color: initial;
+  outline-style: initial;
+  outline-width: initial;
+  padding-bottom: initial;
+  padding-left: initial;
+  padding-right: initial;
+  padding-top: initial;
+  text-align: inherit;
+  text-decoration: initial;
+  text-shadow: initial;
+  text-transform: initial;
+  -webkit-transition-delay: initial;
+     -moz-transition-delay: initial;
+          transition-delay: initial;
+  -webkit-transition-duration: initial;
+     -moz-transition-duration: initial;
+          transition-duration: initial;
+  -webkit-transition-property: initial;
+     -moz-transition-property: initial;
+          transition-property: initial;
+  -webkit-transition-timing-function: initial;
+     -moz-transition-timing-function: initial;
+          transition-timing-function: initial;
+  vertical-align: initial;
+  white-space: initial;
+  width: initial;
+  word-wrap: initial;
+}
+
+#dm-parent #dm-wrapper #dm-inner *:hover,
+#dm-parent #dm-wrapper #dm-inner *:focus,
+#dm-parent #dm-wrapper #dm-inner a:hover,
+#dm-parent #dm-wrapper #dm-inner a:focus {
+  background-attachment: initial;
+  background-clip: initial;
+  background-color: initial;
+  background-image: initial;
+  background-origin: initial;
+  background-size: initial;
+  border-bottom-color: initial;
+  border-bottom-left-radius: initial;
+  border-bottom-right-radius: initial;
+  border-bottom-style: initial;
+  border-bottom-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  border-image-slice: initial;
+  border-image-source: initial;
+  border-image-width: initial;
+  border-left-color: initial;
+  border-left-style: initial;
+  border-left-width: initial;
+  border-right-color: initial;
+  border-right-style: initial;
+  border-right-width: initial;
+  border-top-color: initial;
+  border-top-left-radius: initial;
+  border-top-right-radius: initial;
+  border-top-style: initial;
+  border-top-width: initial;
+  box-shadow: initial;
+  color: inherit;
+  cursor: initial;
+  font-family: inherit;
+  font-stretch: initial;
+  font-variant: initial;
+  height: initial;
+  line-height: initial;
+  margin-bottom: initial;
+  margin-left: initial;
+  margin-right: initial;
+  margin-top: initial;
+  max-width: initial;
+  min-height: initial;
+  opacity: initial;
+  outline: initial;
+  outline-color: initial;
+  outline-style: initial;
+  outline-width: initial;
+  padding-bottom: initial;
+  padding-left: initial;
+  padding-right: initial;
+  padding-top: initial;
+  text-decoration: initial;
+  text-shadow: initial;
+  text-transform: initial;
+  -webkit-transition-delay: initial;
+          transition-delay: initial;
+  -webkit-transition-duration: initial;
+          transition-duration: initial;
+  -webkit-transition-property: initial;
+          transition-property: initial;
+  -webkit-transition-timing-function: initial;
+          transition-timing-function: initial;
+  vertical-align: initial;
+  white-space: initial;
+  width: initial;
+  word-wrap: initial;
+  z-index: initial;
+}
+#dm-parent #dm-wrapper #dm-inner ul {
+  list-style-image: none;
+  list-style-position: initial;
+  list-style-type: none;
+}
+
+#dm-parent #dm-wrapper #dm-inner {
+  position: relative;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#dm-parent #dm-wrapper #dm-inner i {
+  font-style: italic;
+}
+
+#dm-parent #dm-wrapper #dm-inner .menu.sticky {
+  position: absolute !important;
+}
+
+#dm-parent #dm-wrapper #dm-inner .image.full p,
+#dm-parent #dm-wrapper #dm-inner .image img,
+#dm-parent #dm-wrapper #dm-inner .feature img {
+  opacity:1 !important;
+}
+#dm-parent #dm-wrapper #dm-inner .image.full img,
+#dm-parent #dm-wrapper #dm-inner .image.medium img {
+  width: 100%;
+}
+#dm-parent #dm-wrapper #dm-inner .cover .container-holder {
+  z-index: 3;
+}
+#dm-parent #dm-wrapper #dm-inner .background-preloader {
+  display: none;
+}
+#dm-parent #dm-wrapper #dm-inner .background:not(:last-child) {
+  display: none;
+}
+
+/*fixes for existing themes*/
+#dm-parent #dm-wrapper #dm-inner *:before,
+#dm-parent #dm-wrapper #dm-inner *:after {
+  display: none;
+}
+#dm-parent #dm-wrapper #dm-inner .dm-template .cover .container-holder {
+  z-index: 3;
+}
+#dm-parent #dm-wrapper #dm-inner .dm-template .cover .section-bg {
+  z-index: 2;
+}
+#dm-parent #dm-wrapper #dm-inner .dm-template .section-bg {
+  z-index: 0 !important;
+}
+#dm-parent #dm-wrapper #dm-inner .dm-template .section-bg + .container {
+  position: relative;
+}
+#dm-parent #dm-wrapper #dm-inner .grid .gridCell .image {
+  margin-bottom: 0 !important;
+}

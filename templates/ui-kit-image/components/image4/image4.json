@@ -1,0 +1,47 @@
+{
+    "media": {
+        "show": "image",
+        "image": {
+            "src": {
+                "small": "templates\/ui-kit-image\/img\/dress-small.jpg",
+                "base": "templates\/ui-kit-image\/img\/dress.jpg"
+            },
+            "layout": "medium",
+            "align": "center",
+            "url": "",
+            "imageIsSmall": false
+        }
+    },
+    "text": {
+        "content": [
+            {
+                "tagName": "p",
+                "html": "<br\/>",
+                "style": {
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "color": "#6c6c6c",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Type here caption of the photo (optional)."
+    },
+    "block_bg": {
+        "color": "#ffffff",
+        "opacity": "0",
+        "image": "",
+        "gradient": "",
+        "gradient_type": "default",
+        "angle": "90",
+        "type": "color"
+    },
+    "paddings": {
+        "top": 4,
+        "bottom": 4
+    },
+    "anchor": ""
+}

@@ -1,0 +1,47 @@
+{
+    "sticky": true,
+    "bg_color": "#fff",
+    "opacity": "0.98",
+    "bg_color_type": "color",
+    "brand": {
+        "src": {
+            "base": "templates/ui-kit-menu/img/designmodo.png"
+        },
+        "url": ""
+    },
+    "links": {
+        "align": "center",
+        "style": {
+            "bold": "normal",
+            "italic": "normal",
+            "color": "#424242",
+            "opacity": "0.9",
+            "fontFamily": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "fontSize": "1"
+        },
+        "show": false
+    },
+    "button": {
+        "content": "Get the App",
+        "url": "",
+        "content-style": {
+            "font-family": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "color": "#424242"
+        },
+        "button-style": {
+            "border-width": "1px",
+            "border-style": "solid",
+            "background-color": "#FFF",
+            "border-color": "rgba(66,66,66,0.2)",
+            "border-radius": "45px",
+						"padding": "10px"
+        },
+        "classes": [
+            "font-size-1",
+            "line-height-1"
+        ],
+        "target": false,
+        "placeholder": "Enter button text here...",
+        "show": false
+    }
+}

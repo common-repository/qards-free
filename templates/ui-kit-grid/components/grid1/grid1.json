@@ -1,0 +1,226 @@
+{
+    "title": {
+        "content": [
+            {
+                "tagName": "h1",
+                "html": "Travel to Point Bonita",
+                "style": {
+                    "color": "#424242",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-weight": "bold",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Write your message here..."
+    },
+    "hero": {
+        "content": [
+            {
+                "tagName": "p",
+                "html": "Point Bonita Lighthouse is reached by a half mile trail that is very steep in parts.",
+                "style": {
+                    "color": "#6c6c6c",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "hero",
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Write your message here..."
+    },
+    "grid": [
+        {
+            "link": {
+                "content": "",
+                "url": "",
+                "content-style": {
+                    "text-align": "left",
+                    "font-family": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "color": "rgb(55, 55, 55)"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ],
+                "placeholder": "Enter link text here...",
+                "target": false,
+                "bottom": false
+            },
+            "media": {
+                "show": "image",
+                "bg_image": {
+                    "src": {
+                        "small": "templates\/ui-kit-grid\/img\/3-2-small.jpg",
+                        "base": "templates\/ui-kit-grid\/img\/3-2.jpg"
+                    }
+                },
+                "video": {
+                    "id": "",
+                    "autoplay": false,
+                    "controls": false
+                }
+            },
+            "sub_title": {
+                "content": [
+                    {
+                        "tagName": "p",
+                        "html": "Point Bonita Lighthouse",
+                        "style": {
+                            "color": "#424242",
+                            "font-family": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+                            "font-weight": "bold",
+                            "font-style": "normal"
+                        },
+                        "classes": [
+                            "font-size-4",
+                            "line-height-4"
+                        ]
+                    }
+                ],
+                "placeholder": "Enter title here"
+            },
+            "text": {
+                "content": [
+                    {
+                        "tagName": "p",
+                        "html": "Point Bonita today is part of the largest urban national park in the United States, the Golden Gate National Recreation Area.",
+                        "style": {
+                            "color": "#6c6c6c",
+                            "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                            "font-style": "normal"
+                        },
+                        "classes": [
+                            "font-size-4",
+                            "line-height-4"
+                        ]
+                    }
+                ],
+                "placeholder": "Right here you can describe this block"
+            },
+            "isDuplicate": false
+        },
+        {
+            "link": {
+                "content": "",
+                "url": "",
+                "content-style": {
+                    "text-align": "left",
+                    "font-family": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+                    "color": "rgb(55, 55, 55)"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ],
+                "placeholder": "Enter link text here...",
+                "target": false,
+                "bottom": false
+            },
+            "media": {
+                "show": "image",
+                "bg_image": {
+                    "src": {
+                        "small": "templates\/ui-kit-grid\/img\/3-1-small.jpg",
+                        "base": "templates\/ui-kit-grid\/img\/3-1.jpg"
+                    }
+                },
+                "video": {
+                    "id": "",
+                    "autoplay": false,
+                    "controls": false
+                }
+            },
+            "sub_title": {
+                "content": [
+                    {
+                        "tagName": "p",
+                        "html": "Marin Headlands",
+                        "style": {
+                            "color": "#424242",
+                            "font-family": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+                            "font-weight": "normal",
+                            "font-style": "normal"
+                        },
+                        "classes": [
+                            "font-size-4",
+                            "line-height-4"
+                        ]
+                    }
+                ],
+                "placeholder": "Enter title here"
+            },
+            "text": {
+                "content": [
+                    {
+                        "tagName": "p",
+                        "html": "Inside this area, you will find park rangers to help you decide where to go among the many things to see in the area.",
+                        "style": {
+                            "color": "#6c6c6c",
+                            "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                            "font-style": "normal"
+                        },
+                        "classes": [
+                            "font-size-4",
+                            "line-height-4"
+                        ]
+                    }
+                ],
+                "placeholder": "Right here you can describe this block"
+            },
+            "isDuplicate": false
+        }
+    ],
+    "columns": {
+        "count": 2
+    },
+    "layout": {
+        "header": {
+            "label": "Show Header",
+            "value": true
+        },
+        "hero": {
+            "label": "Show Hero",
+            "value": true
+        },
+        "image": {
+            "label": "Show Media",
+            "value": true
+        },
+        "title": {
+            "label": "Show Title",
+            "value": true
+        },
+        "description": {
+            "label": "Show Description",
+            "value": true
+        }
+    },
+    "seamless": {
+        "label": "Seamless Grid",
+        "value": false
+    },
+    "block_bg": {
+        "color": "#ffffff",
+        "opacity": "1",
+        "image": "",
+        "gradient": "",
+        "gradient_type": "default",
+        "angle": "90",
+        "type": "color"
+    },
+    "imgHeight": 1,
+    "paddings": {
+        "top": 12,
+        "bottom": 4
+    },
+    "anchor": ""
+}

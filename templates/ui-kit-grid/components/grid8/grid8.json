@@ -1,0 +1,216 @@
+{
+    "text": {
+        "content": "<h2><strong><span style=\"font-family: 'Open Sans', sans-serif; color: #000000; font-size: 1.25em;\">Microblogging</span></strong></h2><p style=\"line-height: 1.625;\"><span style=\"font-family: 'Open Sans', sans-serif; font-weight: 100; color: #000000; font-size: 1.5em;\">Microblogging is the practice of posting small pieces of digital content&mdash;which could be text, pictures, short videos, or other media.</span></p>",
+        "placeholder": "Write your message here..."
+    },
+    "grid": [
+        {
+            "link": {
+                "content": "Take a look &rsaquo;",
+                "url": "",
+                "content-style": {
+                    "text-align": "left",
+                    "font-family": "'Open Sans Light', Arial, sans-serif",
+                    "color": "#245AB4"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ],
+                "placeholder": "Enter link text here...",
+                "target": false,
+                "bottom": true
+            },
+            "media": {
+                "show": "image",
+                "bg_image": {
+                    "src": {
+                        "small": "templates\/ui-kit-grid\/img\/pro-image-photography-small-min.jpg",
+                        "base": "templates\/ui-kit-grid\/img\/pro-image-photography-min.jpg"
+                    }
+                },
+                "video": {
+                    "id": "",
+                    "autoplay": false,
+                    "controls" : false
+                }
+            },
+            "sub_title": {
+                "content": [
+                    {
+                        "tagName": "p",
+                        "html": "White-tailed Deer in NJ",
+                        "style": {
+                            "color": "#424242",
+                            "font-family": "'Open Sans', Arial, sans-serif",
+                            "font-weight": "bold",
+                            "font-style": "normal"
+                        },
+                        "classes": [
+                            "font-size-6",
+                            "line-height-4"
+                        ]
+                    }
+                ],
+                "placeholder": "Enter title here"
+            },
+            "text": {
+                "content": "<p style=\"line-height: 1.625;\"><span style=\"color: #6c6c6c; font-size: 1.25em; font-family: 'Open Sans', sans-serif; font-weight: 100;\">Deer herd is a major component of the landscape throughout all but the most urbanized areas of the state.</span></p>",
+                "placeholder": "Right here you can describe this block"
+            },
+            "isDuplicate": false
+        },
+        {
+            "link": {
+                "content": "Take a look &rsaquo;",
+                "url": "",
+                "content-style": {
+                    "text-align": "left",
+                    "font-family": "'Open Sans Light', Arial, sans-serif",
+                    "color": "#245AB4"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ],
+                "placeholder": "Enter link text here...",
+                "target": false,
+                "bottom": true
+            },
+            "media": {
+                "show": "image",
+                "bg_image": {
+                    "src": {
+                        "small": "templates\/ui-kit-grid\/img\/fox-small-min.jpg",
+                        "base": "templates\/ui-kit-grid\/img\/fox-min.jpg"
+                    }
+                },
+                "video": {
+                    "id": "",
+                    "autoplay": false,
+                    "controls" : false
+                }
+            },
+            "sub_title": {
+                "content": [
+                    {
+                        "tagName": "p",
+                        "html": "Rye Field",
+                        "style": {
+                            "color": "#424242",
+                            "font-family": "'Open Sans', Arial, sans-serif",
+                            "font-weight": "normal",
+                            "font-style": "normal"
+                        },
+                        "classes": [
+                            "font-size-6",
+                            "line-height-4"
+                        ]
+                    }
+                ],
+                "placeholder": "Enter title here"
+            },
+            "text": {
+                "content": "<p style=\"line-height: 1.625;\"><span style=\"color: #6c6c6c; font-size: 1.25em; font-family: 'Open Sans', sans-serif; font-weight: 100;\">Rye grain is used for flour, rye bread, crisp bread, some whiskeys, some vodkas, and animal fodder.</span></p>",
+                "placeholder": "Right here you can describe this block"
+            },
+            "isDuplicate": false
+        },
+        {
+            "link": {
+                "content": "Take a look &rsaquo;",
+                "url": "",
+                "content-style": {
+                    "text-align": "left",
+                    "font-family": "'Open Sans Light', Arial, sans-serif",
+                    "color": "#245AB4"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ],
+                "placeholder": "Enter link text here...",
+                "target": false,
+                "bottom": true
+            },
+            "media": {
+                "show": "image",
+                "bg_image": {
+                    "src": {
+                        "small": "templates\/ui-kit-grid\/img\/jen-palmer-small-min.jpg",
+                        "base": "templates\/ui-kit-grid\/img\/jen-palmer-min.jpg"
+                    }
+                },
+                "video": {
+                    "id": "",
+                    "autoplay": false,
+                    "controls" : false
+                }
+            },
+            "sub_title": {
+                "content": [
+                    {
+                        "tagName": "p",
+                        "html": "National Recreation Area",
+                        "style": {
+                            "color": "#424242",
+                            "font-family": "'Open Sans', Arial, sans-serif",
+                            "font-weight": "normal",
+                            "font-style": "normal"
+                        },
+                        "classes": [
+                            "font-size-6",
+                            "line-height-4"
+                        ]
+                    }
+                ],
+                "placeholder": "Enter title here"
+            },
+            "text": {
+                "content": "<p style=\"line-height: 1.625;\"><span style=\"color: #6c6c6c; font-size: 1.25em; font-family: 'Open Sans', sans-serif; font-weight: 100;\">Golden Gate Area chronicles two hundred years of history, from the Native American culture.</span></p>",
+                "placeholder": "Right here you can describe this block"
+            },
+            "isDuplicate": false
+        }
+    ],
+    "columns": {
+        "count": 3
+    },
+    "layout": {
+        "text": {
+            "label": "Show Text",
+            "value": true
+        },
+        "image": {
+            "label": "Show Media",
+            "value": true
+        },
+        "title": {
+            "label": "Show Title",
+            "value": true
+        },
+        "description": {
+            "label": "Show Description",
+            "value": true
+        }
+    },
+    "block_bg": {
+        "color": "#ffffff",
+        "opacity": "1",
+        "image": "",
+        "gradient": "",
+        "gradient_type": "default",
+        "angle": "90",
+        "type": "color"
+    },
+    "seamless": {
+        "label": "Seamless Grid",
+        "value": false
+    },
+    "imgHeight": 1,
+    "paddings": {
+        "top": 6,
+        "bottom": 6
+    },
+    "anchor": ""
+}

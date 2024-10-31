@@ -1,0 +1,324 @@
+<div
+    class="dm-template dm-grid grid2-{{ component_id }}"
+    {% if wp_mode %}
+        dm-template="grid.grid2"
+        component-id="{{ component_id }}"
+    {% if edit_mode is empty and anchor %} id="{{ anchor }}"{% endif %}
+    {% endif %}>
+    {% if edit_mode %}
+    <section
+        dm-grid class="grid"
+        top-padding-old
+        bottom-padding-old
+        dm-padding-draggable-top
+        dm-padding-draggable-bottom
+        ng-class="getClassString(data)">
+    {% else %}
+    <section class="grid column-{{ columns.count }} image-{{ imgHeight }} top-padding-{{ paddings.top }} bottom-padding-{{ paddings.bottom }} {% if seamless.value %}seamless{% endif %}">
+    {% endif %}
+        {% if edit_mode %}
+            <div
+                ng-if="data.block_bg.type == 'image'"
+                class="section-bg section-image"
+                ng-style="{'background-image': 'url({{ pluginUrl }}' + data.block_bg.image + ')' }"></div>
+            <div
+                ng-if="data.block_bg.type == 'color'"
+                class="section-bg section-color"
+                ng-style="{'background-color': data.block_bg.color, 'opacity': data.block_bg.opacity}"></div>
+            <div ng-if="data.block_bg.type == 'gradient'">
+                <div
+                    ng-if="!data.block_bg.gradient[2]"
+                    class="section-bg section-gradient"
+                    ng-style="{
+                        'background': 'linear-gradient(' + data.block_bg.angle + 'deg,  ' + data.block_bg.gradient[0].color + ' ' + data.block_bg.gradient[0].x + '%, ' + data.block_bg.gradient[1].color + ' ' + data.block_bg.gradient[1].x + '%)'
+                    }"></div>
+                <div
+                    ng-if="data.block_bg.gradient[2]"
+                    class="section-bg section-gradient"
+                    ng-style="{
+                        'background': 'linear-gradient(' + data.block_bg.angle + 'deg,  ' + data.block_bg.gradient[0].color + ' ' + data.block_bg.gradient[0].x + '%, ' + data.block_bg.gradient[1].color + ' ' + data.block_bg.gradient[1].x + '%, ' + data.block_bg.gradient[2].color + ' ' + data.block_bg.gradient[2].x + '%)'
+                    }"></div>
+            </div>
+        {% else %}
+            {% if block_bg.type == 'image' %}
+                <div
+                    class="section-bg section-image"
+                    style="background-image: url({{ pluginUrl }}{{ block_bg.image }});"></div>
+            {% elseif block_bg.type == 'color' %}
+                <div
+                    class="section-bg section-color"
+                    style="background-color: {{ block_bg.color }}; opacity: {{ block_bg.opacity }};"></div>
+            {% elseif block_bg.type == 'gradient' %}
+                {% if block_bg.gradient[2] %}
+                    <div
+                        class="section-bg section-gradient"
+                        style="
+                            background: linear-gradient({{ block_bg.angle }}deg, {{ block_bg.gradient[0].color }} {{ block_bg.gradient[0].x }}%, {{ block_bg.gradient[1].color }} {{ block_bg.gradient[1].x }}%, {{ block_bg.gradient[2].color }} {{ block_bg.gradient[2].x }}%);
+                        "></div>
+                {% else %}
+                    <div
+                        class="section-bg section-gradient"
+                        style="
+                            background: linear-gradient({{ block_bg.angle }}deg, {{ block_bg.gradient[0].color }} {{ block_bg.gradient[0].x }}%, {{ block_bg.gradient[1].color }} {{ block_bg.gradient[1].x }}%);
+                        "></div>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        <div class="container">
+            {% if edit_mode %}
+                <div
+                    text-editing
+                    text-editing-include="[paragraphs, bold, italic, justify, heading, anchor, color, fonts]"
+                    ng-model="data.title"
+                    text-editing-default-paragraph="h1"
+                    ng-class="{invisible: !data.layout.header.value}"
+                    ng-show="data.layout.header.value">
+                </div>
+            {% else %}
+                {% if layout.header.value %}
+                    {% for el in title.content %}
+                        <{{ el.tagName }}
+                                style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                                class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                            {{ el.html }}
+                        </{{ el.tagName }}>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+            {% if edit_mode %}
+                <div
+                    text-editing
+                    text-editing-include="[paragraphs, bold, italic, justify, heading, anchor, color, fonts]"
+                    ng-model="data.hero"
+                    text-editing-default-paragraph="hero"
+                    ng-class="{invisible: !data.layout.hero.value}"
+                    ng-show="data.layout.hero.value">
+                </div>
+            {% else %}
+                {% if layout.hero.value %}
+                    {% for el in hero.content %}
+                        <{{ el.tagName }}
+                                style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                                class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                            {{ el.html }}
+                        </{{ el.tagName }}>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+            <ul {% if edit_mode %} dm-grid-list {% endif %} class="grid-list">
+                {% if edit_mode %}
+                    <li
+                        ng-repeat="grid_item in data.grid"
+                        class="dm-grid-item-holder gl-i"
+                        ng-class="{
+                            'gridCell': !data.seamless.value && !data.layout.title.value && !data.layout.description.value,
+                            'showWidgetAlways':
+                                !grid_item.media.bg_image.src.base && grid_item.media.show !== 'video' && data.layout.image.value,
+                            'video-item': grid_item.media.show === 'video'
+                        }"
+                        ng-mousedown="changeHovered($event)"
+                        dm-grid-item>
+                        <div
+                            dm-media-preloader-delegate
+                            ng-show="!grid_item.isDuplicate">
+                            <div
+                                dm-media-preloader
+                                class="droppable-media-holder"
+                                ng-if="data.layout.image.value">
+                                <div
+                                    class="image"
+                                    ng-show="grid_item.media.show === 'image'"
+                                    ng-class="{placeholderImg: !grid_item.media.bg_image.src.base && !grid_item.media.video.id}"
+                                    ng-style="{'background-image': 'url({{ pluginUrl }}' + grid_item.media.bg_image.src.base + ')'}">
+                                </div>
+                                <div ng-if="grid_item.media.show === 'video'" class="video-player image editor">
+                                    <iframe
+                                        dm-video-player="grid_item.media.video.id"
+                                        frameborder="0"
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <div
+                                    dm-image-width="{
+                                        'small': '8',
+                                        'base': '1200'
+                                    }"
+                                    dm-media-show="grid_item.media.show"
+                                    dm-drop-image="grid_item.media.bg_image.src.base"
+                                    ng-if="grid_item.media.bg_image.src.base">
+                                </div>
+                                <div
+                                    dm-image-width="{
+                                        'small': '8',
+                                        'base': '1200'
+                                    }"
+                                    dm-media-show="grid_item.media.show"
+                                    dm-drop-image="grid_item.media.bg_image.src.base"
+                                    dm-drop-image-clickable
+                                    ng-if="!grid_item.media.bg_image.src.base">
+                                </div>
+                            </div>
+                            <div class="description-holder" ng-if="grid_item.media.show !== 'video' || grid_item.media.show === 'video' && !data.seamless.value" ng-show="grid_item.media.bg_image.src.base || !data.seamless.value" ng-class="{hidePopover: data.seamless.value && !data.layout.title.value && !data.layout.description.value}">
+                                <div>
+                                    <div>
+                                        <div class="title" ng-show="data.layout.title.value" ng-class="{visible: data.layout.title.value}" dm-grid-max-size="400" dm-grid-max-size-comp="grid_item.sub_title.content[0].html">
+                                            <div
+                                                text-editing
+                                                text-editing-include="[bold, italic, justify, color, fonts]"
+                                                text-editing-inverted="data.seamless.value"
+                                                text-editing-default-paragraph="h3"
+                                                ng-model="grid_item.sub_title"></div>
+                                        </div>
+                                        <div class="description" ng-show="data.layout.description.value" ng-class="{visible: data.layout.description.value}" dm-grid-max-size="2000" dm-grid-max-size-comp="grid_item.text.content[0].html">
+                                            <div
+                                                text-editing
+                                                text-editing-include="[paragraphs, bold, italic, justify, color, fonts]"
+                                                text-editing-inverted="data.seamless.value"
+                                                ng-model="grid_item.text"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                button-editing
+                                button-editing-include="[bold, italic, justify, anchor, color, fonts]"
+                                button-editing-is-button="false"
+                                ng-model="grid_item.link"
+                                ng-show="grid_item.link.bottom && !data.seamless.value"></div>
+                            <div
+                                class="dm-widget grid-popover-holder has-arrow bottom"
+                                ng-class="{
+                                    'smallWidget': grid_item.isAdded && !grid_item.media.bg_image.src.base,
+                                    'mediumWidget': grid_item.media.show === 'video' && data.seamless.value || !data.layout.image.value,
+                                    'tinyWidget': !data.layout.image.value && grid_item.isAdded }"
+                                data-html2canvas-ignore>
+                                
+                                <div class="dm-widget-item" dm-widget-drop-down ng-show="data.layout.image.value">
+    <div dm-upload-media>
+        <div dm-upload-drop-down-image>
+            <div dm-wp-media-library
+                 dm-media-show="grid_item.media.show"
+                 dm-selected-image="grid_item.media.bg_image.src.base">
+            </div>
+        </div>
+        <div dm-upload-drop-down-video>
+            <div
+                dm-upload-video="grid_item.media.video.id"
+                dm-upload-video-autoplay="grid_item.media.video.autoplay"
+                dm-upload-video-controls="grid_item.media.video.controls"
+                dm-media-show="grid_item.media.show">
+            </div>
+        </div>
+    </div>
+</div>
+                                
+                                <div class="dm-widget-item dm-item-url" dm-widget-drop-down ng-hide="grid_item.isAdded && data.layout.title.value && !data.layout.image.value || grid_item.isAdded && data.layout.description.value && !data.layout.image.value || grid_item.isAdded && !grid_item.media.bg_image.src.base || grid_item.media.show == 'video' && data.seamless.value">
+                                    <div dm-grid-link="grid_item.link" dm-grid-link-layout="data.seamless.value"></div>
+                                </div>
+                                <div class="dm-widget-item"
+                                    dm-grid-duplicate="grid_item"
+                                    dm-grid-duplicate-container="data.grid"
+                                    dm-grid-duplicate-layout="data.layout"
+                                    dm-grid-duplicate-columns="data.columns.count"
+                                    ng-hide="
+                                        grid_item.isAdded && data.layout.title.value && grid_item.media.show !== 'video' && !data.layout.image.value ||
+                                        grid_item.isAdded && data.layout.description.value && grid_item.media.show !== 'video' && !data.layout.image.value ||
+                                        grid_item.isAdded && !grid_item.media.bg_image.src.base && grid_item.media.show !== 'video' ||
+                                        !data.seamless.value && grid_item.media.show === 'video' && data.layout.title.value && !grid_item.sub_title.content[0].html ||
+                                        !data.seamless.value && grid_item.media.show === 'video' && data.layout.title.value && grid_item.sub_title.content[0].html === '<br/>' ||
+                                        !data.seamless.value && grid_item.media.show === 'video' && data.layout.description.value && !grid_item.text.content[0].html ||
+                                        !data.seamless.value && grid_item.media.show === 'video' && data.layout.description.value && grid_item.text.content[0].html === '<br/>'
+                                    "></div>
+                                <div class="dm-widget-item" dm-grid-remove="grid_item" dm-grid-remove-container="data.grid" dm-grid-remove-count="data.columns.count"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="addCols-holder" data-html2canvas-ignore ng-show="data.grid"><span class="image" dm-grid-add="data.grid"></span></li>
+                {% else %}
+                    {% for grid_item in grid %}
+                        <li class="{{ grid_item.media.show }}-grid-item {% if seamless.value is empty and layout.title.value is empty and layout.description.value is empty %}gridCell{% endif %} gl-i">
+                            {% if grid_item.link.url %}
+                                <a href="{{ grid_item.link.url }}" {% if grid_item.link.target %} target="_blank" {% endif %}>
+                            {% endif %}
+                                {% if layout.image.value %}
+                                    {% if grid_item.media.show == 'image' %}
+                                        <div class="image" style="background-image: url({{ pluginUrl }}{{ grid_item.media.bg_image.src.base }})"></div>
+                                    {% endif %}
+                                    {% if grid_item.media.show == 'video' %}
+                                        <div class="video-player image">
+                                            <iframe
+                                                src="https://www.youtube.com/embed/{{ grid_item.media.video.id }}?rel=0&controls={% if grid_item.media.video.controls %}1{% else %}0{% endif %}&showinfo=0&autohide=1&hd=1&autoplay={{ grid_item.media.video.autoplay }}"
+                                                frameborder="0"
+                                                allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                                {% if layout.title.value or layout.description.value %}
+                                    {% if grid_item.media.show == 'image' or grid_item.media.show == 'video' and seamless.value == false %}
+                                        <div class="description-holder">
+                                            <div>
+                                                <div>
+                                                    {% if layout.title.value %}
+                                                        {% for el in grid_item.sub_title.content %}
+                                                            <{{ el.tagName }}
+                                                                    style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                                                                    class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                                                                {{ el.html }}
+                                                            </{{ el.tagName }}>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                    {% if layout.description.value %}
+                                                        {% for el in grid_item.text.content %}
+                                                            <{{ el.tagName }}
+                                                                    style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                                                                    class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                                                                {{ el.html }}
+                                                            </{{ el.tagName }}>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                                {% if grid_item.link.bottom and seamless.value is empty %}
+                                    <div style="{% for s, v in grid_item.link['content-style'] %}{{ s }}: {{ v }}; {% endfor %}">
+                                        <p
+                                            class="url {% for c in grid_item.link.classes %} {{ c }} {% endfor %}">
+                                            {{ grid_item.link.content }}
+                                        </p>
+                                    </div>
+                                {% endif %}
+                            {% if grid_item.link.url %}
+                               </a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+    </section>
+    {% if edit_mode %}
+        <div class="dm-widget-main align-center" data-html2canvas-ignore>
+            <div class="dm-widget dm-grid-widget-main" style="top: 25px !important">
+                <div class="dm-widget-item" dm-grid-add="data.grid" dm-grid-add-layout="data.layout"></div>
+                <div class="dm-widget-item dm-grid-layout" dm-widget-drop-down>
+                    <div dm-grid-layout="data.layout" dm-grid-seamless="data.seamless" dm-grid-img-height="data.imgHeight"></div>
+                </div>
+                <div class="dm-widget-item dm-grid-columns" dm-widget-drop-down>
+                    <div dm-grid-columns="data.columns.count" dm-grid-columns-container="data.grid" dm-grid-columns-layout="data.layout"></div>
+                </div>
+                <div id="srtbl" class="srtbl dm-widget-item dm-grid-srtbl" >
+                    <div class="srtbl" dm-grid-srtbl="data.columns.count" dm-grid-srtbl-container="data.grid" dm-grid-srtbl-layout="data.layout"></div>
+                </div>
+                <div class="dm-widget-item dm-bg-options hidden-widget" dm-widget-drop-down>
+                    <div dm-bg-options="['opacity', 'color', 'gradient', 'image', 'navigation']" dm-bg-options-color="data.block_bg.color" dm-bg-options-opacity="data.block_bg.opacity" dm-bg-options-image="data.block_bg.image" dm-bg-options-gradient="data.block_bg.gradient" dm-bg-options-gradient-type="data.block_bg.gradient_type" dm-bg-options-type="data.block_bg.type" dm-bg-options-angle="data.block_bg.angle"></div>
+                </div>
+                <div class="dm-widget-item" dm-widget-drop-down>
+                    <div dm-tools='["move", "duplicate", "appearance", "customCSS", "remove", "anchor"]' anchor-value="data.anchor" top-padding="data.paddings.top" bottom-padding="data.paddings.bottom"></div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>

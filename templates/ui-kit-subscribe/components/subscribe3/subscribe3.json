@@ -1,0 +1,84 @@
+{
+    "title": {
+        "content": [
+            {
+                "tagName": "h1",
+                "html": "Newsletter",
+                "style": {
+                    "color": "#424242",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-weight": "bold",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Write your message here..."
+    },
+    "hero": {
+        "content": [
+            {
+                "tagName": "p",
+                "html": "Subscribe to our email newsletter for useful tips and interesting resources, sent out every Friday.",
+                "style": {
+                    "color": "#6c6c6c",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "hero",
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Write your message here..."
+    },
+    "button": {
+        "content": "Subscribe",
+        "content-style": {
+            "font-family": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "color": "#FFF"
+        },
+        "button-style": {
+            "border-width": "0",
+            "border-style": "solid",
+            "background-color": "#11a1ec",
+            "border-color": "#11a1ec",
+            "border-radius": "45px",
+            "padding": "15px"
+        },
+        "classes": [
+            "font-size-8",
+            "line-height-2"
+        ],
+        "placeholder": "Enter button text here..."
+    },
+    "layout": {
+        "header": {
+            "label": "Show Header",
+            "value": true
+        },
+        "hero": {
+            "label": "Show Hero",
+            "value": true
+        }
+    },
+    "block_bg": {
+        "color": "#ffffff",
+        "opacity": "1",
+        "image": "",
+        "gradient": "",
+        "gradient_type": "default",
+        "angle": "90",
+        "type": "color"
+    },
+    "paddings": {
+        "top": 10,
+        "bottom": 4
+    },
+    "anchor": ""
+}

@@ -1,0 +1,75 @@
+{
+    "text": {
+        "content": [
+            {
+                "tagName": "h1",
+                "html": "Alice in Wonderland",
+                "style": {
+                    "color": "#424242",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-weight": "bold",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            },
+            {
+                "tagName": "p",
+                "html": "The journey began at Folly Bridge near Oxford and ended five miles away in the village of Godstow.",
+                "style": {
+                    "color": "#6c6c6c",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "hero",
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            },
+            {
+                "tagName": "p",
+                "html": "Alice attends a trial whereby the Knave of Hearts is accused of stealing the Queen's tarts. The jury is composed of various animals, including Bill the Lizard, the White Rabbit is the court's trumpeter, and the judge is the King of Hearts. During the proceedings, Alice finds that she is steadily growing larger.",
+                "style": {
+                    "color": "#6c6c6c",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            },
+            {
+                "tagName": "p",
+                "html": "The dormouse scolds Alice and tells her she has no right to grow at such a rapid pace and take up all the air. Alice scoffs and calls the dormouse's accusation ridiculous because everyone grows.",
+                "style": {
+                    "color": "#6c6c6c",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Write your message here..."
+    },
+    "block_bg": {
+        "color": "#ffffff",
+        "opacity": "1",
+        "image": "",
+        "gradient": "",
+        "gradient_type": "default",
+        "angle": "90",
+        "type": "color"
+    },
+    "paddings": {
+        "top": 12,
+        "bottom": 2
+    },
+    "anchor": ""
+}

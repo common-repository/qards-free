@@ -1,0 +1,138 @@
+<div
+    class="dm-template dm-subscribe"
+    {% if wp_mode %}
+        dm-template="subscribe.subscribe3"
+        component-id="{{ component_id }}"
+    {% if edit_mode is empty and anchor %} id="{{ anchor }}"{% endif %}
+    {% endif %}>
+    {% if edit_mode %}
+        <section
+            dm-subscribe
+            top-padding-old
+            bottom-padding-old
+            dm-padding-draggable-top
+            dm-padding-draggable-bottom
+            class="subscribe"
+            ng-class="getClassString(data)">
+            <div
+                ng-if="data.block_bg.type == 'image'"
+                class="section-bg section-image"
+                ng-style="{'background-image': 'url({{ pluginUrl }}' + data.block_bg.image + ')' }"></div>
+            <div
+                ng-if="data.block_bg.type == 'color'"
+                class="section-bg section-color"
+                ng-style="{'background-color': data.block_bg.color, 'opacity': data.block_bg.opacity}"></div>
+            <div ng-if="data.block_bg.type == 'gradient'">
+                <div
+                    ng-if="!data.block_bg.gradient[2]"
+                    class="section-bg section-gradient"
+                    ng-style="{
+                        'background': 'linear-gradient(' + data.block_bg.angle + 'deg,  ' + data.block_bg.gradient[0].color + ' ' + data.block_bg.gradient[0].x + '%, ' + data.block_bg.gradient[1].color + ' ' + data.block_bg.gradient[1].x + '%)'
+                    }"></div>
+                <div
+                    ng-if="data.block_bg.gradient[2]"
+                    class="section-bg section-gradient"
+                    ng-style="{
+                        'background': 'linear-gradient(' + data.block_bg.angle + 'deg,  ' + data.block_bg.gradient[0].color + ' ' + data.block_bg.gradient[0].x + '%, ' + data.block_bg.gradient[1].color + ' ' + data.block_bg.gradient[1].x + '%, ' + data.block_bg.gradient[2].color + ' ' + data.block_bg.gradient[2].x + '%)'
+                    }"></div>
+            </div>
+    {% else %}
+        <section class="subscribe top-padding-{{ paddings.top }} bottom-padding-{{ paddings.bottom }}">
+            {% if block_bg.type == 'image' %}
+                <div
+                    class="section-bg section-image"
+                    style="background-image: url({{ pluginUrl }}{{ block_bg.image }});"></div>
+            {% elseif block_bg.type == 'color' %}
+                <div
+                    class="section-bg section-color"
+                    style="background-color: {{ block_bg.color }}; opacity: {{ block_bg.opacity }};"></div>
+            {% elseif block_bg.type == 'gradient' %}
+                {% if block_bg.gradient[2] %}
+                    <div
+                        class="section-bg section-gradient"
+                        style="
+                            background: linear-gradient({{ block_bg.angle }}deg, {{ block_bg.gradient[0].color }} {{ block_bg.gradient[0].x }}%, {{ block_bg.gradient[1].color }} {{ block_bg.gradient[1].x }}%, {{ block_bg.gradient[2].color }} {{ block_bg.gradient[2].x }}%);
+                        "></div>
+                {% else %}
+                    <div
+                        class="section-bg section-gradient"
+                        style="
+                            background: linear-gradient({{ block_bg.angle }}deg, {{ block_bg.gradient[0].color }} {{ block_bg.gradient[0].x }}%, {{ block_bg.gradient[1].color }} {{ block_bg.gradient[1].x }}%);
+                        "></div>
+                {% endif %}
+            {% endif %}
+    {% endif %}
+        <div class="container">
+            {% if edit_mode %}
+                <div text-editing
+                     text-editing-include="[paragraphs, heading, bold, italic, heading, justify, anchor, color, fonts]"
+                     ng-model="data.title"
+                     text-editing-default-paragraph="h1"
+                     ng-show="data.layout.header.value">
+                </div>
+            {% else %}
+                {% if layout.header.value %}
+                    {% for el in title.content %}
+                        <{{ el.tagName }}
+                                style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                                class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                            {{ el.html }}
+                        </{{ el.tagName }}>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+
+            {% if edit_mode %}
+                <div text-editing
+                     text-editing-include="[paragraphs, heading, bold, italic, heading, justify, anchor, color, fonts]"
+                     ng-model="data.hero"
+                     text-editing-default-paragraph="hero"
+                     ng-show="data.layout.hero.value">
+                </div>
+            {% else %}
+                {% if layout.hero.value %}
+                    {% for el in hero.content %}
+                        <{{ el.tagName }}
+                                style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                                class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                            {{ el.html }}
+                        </{{ el.tagName }}>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+
+            <form action="" method="post" novalidate>
+                <input class="email-subscribe" placeholder="your e-mail" name="qards_subscribe[email]" type="email">
+                {% if edit_mode %}
+                    <div
+                        button-editing
+                        button-editing-include="[bold, italic, color, fonts, border]"
+                        button-editing-is-button="true"
+                        ng-model="data.button"></div>
+                {% else %}
+                    <button
+                        class="button-subscribe {% if button['button-style'] %}button stroke{% endif %} {% for c in button.classes %} {{ c }} {% endfor %}"
+                        style="{% for s, v in button['button-style'] %}{{ s }}: {{ v }}; {% endfor %}{% for s, v in button['content-style'] %}{{ s }}: {{ v }}; {% endfor %}">
+                        <span class="text-default">{{ button.content }}</span>
+                        <span class="text-done">Done!</span>
+                    </button>
+                {% endif %}
+            </form>
+        </div>
+    </section>
+    {% if edit_mode %}
+        <div class="dm-widget-main align-center" data-html2canvas-ignore ng-class="{'hide-opacity-widget': !data.bg_image.src.base || data.bg_image.src.base == 'img/1x1.png'}">
+            <div class="dm-widget">
+                <div class="dm-widget-item dm-subscribe-layout" dm-widget-drop-down>
+                    <div dm-subscribe-layout="data.layout"></div>
+                </div>
+                <div class="dm-widget-item dm-bg-options hidden-widget" dm-widget-drop-down>
+                    <div dm-bg-options="['opacity', 'color', 'gradient', 'image', 'navigation']" dm-bg-options-color="data.block_bg.color" dm-bg-options-opacity="data.block_bg.opacity" dm-bg-options-image="data.block_bg.image" dm-bg-options-gradient="data.block_bg.gradient" dm-bg-options-gradient-type="data.block_bg.gradient_type" dm-bg-options-type="data.block_bg.type" dm-bg-options-angle="data.block_bg.angle"></div>
+                </div>
+                <div class="dm-widget-item" dm-widget-drop-down>
+                    <div dm-tools='["move", "duplicate", "appearance", "customCSS", "remove", "anchor"]' anchor-value="data.anchor" top-padding="data.paddings.top" bottom-padding="data.paddings.bottom"></div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,595 @@
+
+.dm-feature-ng, .feature {
+	padding-top: 120px;
+	padding-bottom: 40px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	-webkit-transition: padding .25s ease-in-out;
+	-moz-transition: padding .25s ease-in-out;
+	-o-transition: padding .25s ease-in-out;
+	transition: padding .25s ease-in-out;
+}
+
+.feature.horizontal {
+	padding-top: 120px;
+}
+
+.dm-feature-ng img, .feature img {
+	opacity: 0;
+	max-width: 100%;
+}
+
+.dm-feature-ng.large img, .feature.large img {
+	width: 100%;
+}
+
+.dm-feature-ng img.loaded, .feature img.loaded {
+	opacity: 1;
+	-webkit-transition: opacity .5s;
+	-moz-transition: opacity .5s;
+	-o-transition: opacity .5s;
+	transition: opacity .5s;
+}
+
+.dm-feature-ng .container, .feature .container {
+	max-width: 1114px;
+	margin: 0 auto;
+	width: 83.333333%;
+	position: relative;
+	z-index: 1;
+}
+
+.dm-feature-ng .container .dm-feature-elements, .feature .container>ul {
+	display: block;
+	vertical-align: middle;
+	margin: 0 auto;
+	max-width: 1114px;
+	width: 100%;
+}
+
+.dm-feature-ng.vertical .container .dm-feature-elements .dm-feature-element, .feature.vertical .container>ul>li {
+	display: block;
+	text-align: center;
+}
+
+.dm-feature-ng .text-container, .feature .text-container {
+	max-width: 734px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.feature .text-container h1, .feature .text-container .h1 {
+	font-weight: 600;
+	letter-spacing: -1.78px;
+	color: #424242;
+	margin-bottom: 20px;
+}
+
+.feature .text-container .hero {
+	font-weight: 200;
+	color: #6c6c6c;
+}
+
+.feature .text-container p, .feature .text-container h2 {
+	color: #6c6c6c;
+}
+
+.dm-feature-ng .image-container, .feature .image-container {
+	line-height: 0;
+	font-size: 0;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	max-width: 100%;
+	position: relative;
+	-webkit-transition: max-width .25s ease-in-out;
+	-moz-transition: max-width .25s ease-in-out;
+	-o-transition: max-width .25s ease-in-out;
+	transition: max-width .25s ease-in-out;
+}
+
+.dm-feature-ng .image-container a, .dm-feature-ng .image-container a:hover, .feature .image-container a, .feature .image-container a:hover {
+	border: none;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+	display: inline-block;
+}
+
+.dm-feature-ng.vertical.medium .image-container img, .feature.vertical.medium .image-container img {
+	margin: 0 auto;
+	line-height: 0;
+	max-width: 100%;
+}
+
+.dm-feature-ng.vertical .container .dm-feature-elements .dm-feature-element + .dm-feature-element, .feature.vertical .container>ul>li + li {
+	margin-top: 60px;
+}
+
+.dm-feature-ng.vertical.small:not(.dm-feature-filled) .image-container, .feature.vertical.small .image-container {
+	max-width: 544px;
+}
+
+.feature .button-wrapper a {
+	color: inherit;
+}
+
+@media screen and (min-width: 1024px) {
+	.feature.horizontal .container>ul {
+		display: table;
+		table-layout: fixed;
+	}
+	
+	.dm-feature-ng.horizontal .text-container, .feature.horizontal .text-container {
+		text-align: left;
+	}
+	
+	.feature.horizontal .container>ul>li {
+		width: 50%;
+		display: table-cell;
+		vertical-align: middle;
+	}
+	
+	.dm-feature-ng.horizontal .container .dm-feature-elements .dm-feature-element .image-container img, .feature.horizontal .container>ul>li .image-container img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin: 0 auto;
+	}
+	
+	.dm-feature-ng.horizontal .dm-feature-element:first-child .text-container, .feature.horizontal li:first-child .text-container {
+		padding-right: 18%;
+	}
+	
+	.dm-feature-ng.horizontal .dm-feature-element:last-child .text-container, .feature.horizontal li:last-child .text-container {
+		padding-left: 18%;
+	}
+	
+	.dm-feature-ng.horizontal .image-container, .dm-feature-ng.horizontal .text-container, .feature.horizontal .image-container, .feature.horizontal .text-container {
+		margin-top: 0;
+	}
+	
+	.dm-feature-ng.horizontal h1, .feature.horizontal h1 {
+		margin-top: 0;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.dm-feature-ng.vertical .container .dm-feature-elements .dm-feature-element + .dm-feature-element, .dm-feature-ng:not(.dm-feature-filled) .container .dm-feature-elements .dm-feature-element + .dm-feature-element, .feature.vertical .container ul li + li, .feature .container ul li + li {
+		margin-top: 60px;
+	}
+}
+
+@media screen and (max-width: 568px) {
+	.dm-feature-ng.vertical .container .dm-feature-elements .dm-feature-element + .dm-feature-element, .dm-feature-ng:not(.dm-feature-filled) .container .dm-feature-elements .dm-feature-element + .dm-feature-element, .feature.vertical .container ul li + li, .feature .container ul li + li {
+		margin-top: 36px;
+	}
+	
+	.feature .text-container h1, .feature .text-container .h1 {
+		margin-bottom: 10px;
+	}
+	
+	.feature .text-container .hero {
+		margin-top: 22px;
+	}
+}
+
+.dm-feature [button-editing] p .font-size-1, .dm-feature [button-editing] p.font-size-1 {
+	font-size: 24px;
+}
+
+.dm-feature [button-editing] p .font-size-2, .dm-feature [button-editing] p.font-size-2 {
+	font-size: 26px;
+}
+
+.dm-feature [button-editing] p .font-size-3, .dm-feature [button-editing] p.font-size-3 {
+	font-size: 28px;
+}
+
+.dm-feature [button-editing] p .font-size-4, .dm-feature [button-editing] p.font-size-4 {
+	font-size: 30px;
+}
+
+.dm-feature [button-editing] p .font-size-5, .dm-feature [button-editing] p.font-size-5 {
+	font-size: 32px;
+}
+
+.dm-feature [button-editing] p .font-size-6, .dm-feature [button-editing] p.font-size-6 {
+	font-size: 34px;
+}
+
+.dm-feature [button-editing] p .font-size-7, .dm-feature [button-editing] p.font-size-7 {
+	font-size: 36px;
+}
+
+.dm-feature [button-editing] p .font-size-8, .dm-feature [button-editing] p.font-size-8 {
+	font-size: 38px;
+}
+
+.dm-feature [button-editing] p .font-size-9, .dm-feature [button-editing] p.font-size-9 {
+	font-size: 40px;
+}
+
+.dm-feature [button-editing] p .line-height-1, .dm-feature [button-editing] p.line-height-1 {
+	line-height: 1.2;
+}
+
+.dm-feature [button-editing] p .line-height-2, .dm-feature [button-editing] p.line-height-2 {
+	line-height: 1.3;
+}
+
+.dm-feature [button-editing] p .line-height-3, .dm-feature [button-editing] p.line-height-3 {
+	line-height: 1.4;
+}
+
+.dm-feature [button-editing] p .line-height-4, .dm-feature [button-editing] p.line-height-4 {
+	line-height: 1.5;
+}
+
+.dm-feature [button-editing] p .line-height-5, .dm-feature [button-editing] p.line-height-5 {
+	line-height: 1.6;
+}
+
+.dm-feature [button-editing] p .line-height-6, .dm-feature [button-editing] p.line-height-6 {
+	line-height: 1.7;
+}
+
+.dm-feature [button-editing] p .line-height-7, .dm-feature [button-editing] p.line-height-7 {
+	line-height: 1.8;
+}
+
+@media screen and (max-width: 568px) {
+	.dm-feature [button-editing] p .font-size-1, .dm-feature [button-editing] p.font-size-1 {
+		font-size: 24px;
+	}
+	
+	.dm-feature [button-editing] p .font-size-2, .dm-feature [button-editing] p.font-size-2 {
+		font-size: 25px;
+	}
+	
+	.dm-feature [button-editing] p .font-size-3, .dm-feature [button-editing] p.font-size-3 {
+		font-size: 26px;
+	}
+	
+	.dm-feature [button-editing] p .font-size-4, .dm-feature [button-editing] p.font-size-4 {
+		font-size: 27px;
+	}
+	
+	.dm-feature [button-editing] p .font-size-5, .dm-feature [button-editing] p.font-size-5 {
+		font-size: 28px;
+	}
+	
+	.dm-feature [button-editing] p .font-size-6, .dm-feature [button-editing] p.font-size-6 {
+		font-size: 29px;
+	}
+	
+	.dm-feature [button-editing] p .font-size-7, .dm-feature [button-editing] p.font-size-7 {
+		font-size: 30px;
+	}
+	
+	.dm-feature [button-editing] p .font-size-8, .dm-feature [button-editing] p.font-size-8 {
+		font-size: 31px;
+	}
+	
+	.dm-feature [button-editing] p .font-size-9, .dm-feature [button-editing] p.font-size-9 {
+		font-size: 32px;
+	}
+	
+	.dm-feature [button-editing] p .line-height-1, .dm-feature [button-editing] p.line-height-1 {
+		line-height: 1;
+	}
+	
+	.dm-feature [button-editing] p .line-height-2, .dm-feature [button-editing] p.line-height-2 {
+		line-height: 1.1;
+	}
+	
+	.dm-feature [button-editing] p .line-height-3, .dm-feature [button-editing] p.line-height-3 {
+		line-height: 1.2;
+	}
+	
+	.dm-feature [button-editing] p .line-height-4, .dm-feature [button-editing] p.line-height-4 {
+		line-height: 1.3;
+	}
+	
+	.dm-feature [button-editing] p .line-height-5, .dm-feature [button-editing] p.line-height-5 {
+		line-height: 1.4;
+	}
+	
+	.dm-feature [button-editing] p .line-height-6, .dm-feature [button-editing] p.line-height-6 {
+		line-height: 1.5;
+	}
+	
+	.dm-feature [button-editing] p .line-height-7, .dm-feature [button-editing] p.line-height-7 {
+		line-height: 1.6;
+	}
+}
+
+.dm-feature-ng.horizontal.dm-feature-filled {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.dm-feature-ng.top-padding-0, .dm-feature-ng.top-padding-0.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-0 {
+	padding-top: 0;
+}
+
+.dm-feature-ng.top-padding-1, .dm-feature-ng.top-padding-1.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-1 {
+	padding-top: 10px;
+}
+
+.dm-feature-ng.top-padding-2, .dm-feature-ng.top-padding-2.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-2 {
+	padding-top: 20px;
+}
+
+.dm-feature-ng.top-padding-3, .dm-feature-ng.top-padding-3.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-3 {
+	padding-top: 30px;
+}
+
+.dm-feature-ng.top-padding-4, .dm-feature-ng.top-padding-4.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-4 {
+	padding-top: 40px;
+}
+
+.dm-feature-ng.top-padding-5, .dm-feature-ng.top-padding-5.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-5 {
+	padding-top: 50px;
+}
+
+.dm-feature-ng.top-padding-6, .dm-feature-ng.top-padding-6.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-6 {
+	padding-top: 60px;
+}
+
+.dm-feature-ng.top-padding-7, .dm-feature-ng.top-padding-7.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-7 {
+	padding-top: 70px;
+}
+
+.dm-feature-ng.top-padding-8, .dm-feature-ng.top-padding-8.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-8 {
+	padding-top: 80px;
+}
+
+.dm-feature-ng.top-padding-9, .dm-feature-ng.top-padding-9.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-9 {
+	padding-top: 90px;
+}
+
+.dm-feature-ng.top-padding-10, .dm-feature-ng.top-padding-10.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-10 {
+	padding-top: 100px;
+}
+
+.dm-feature-ng.top-padding-11, .dm-feature-ng.top-padding-11.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-11 {
+	padding-top: 110px;
+}
+
+.dm-feature-ng.top-padding-12, .dm-feature-ng.top-padding-12.horizontal.dm-feature-filled .dm-feature-element-content, .feature.top-padding-12 {
+	padding-top: 120px;
+}
+
+.dm-feature-ng.bottom-padding-0, .dm-feature-ng.bottom-padding-0.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-0 {
+	padding-bottom: 0;
+}
+
+.dm-feature-ng.bottom-padding-1, .dm-feature-ng.bottom-padding-1.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-1 {
+	padding-bottom: 10px;
+}
+
+.dm-feature-ng.bottom-padding-2, .dm-feature-ng.bottom-padding-2.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-2 {
+	padding-bottom: 20px;
+}
+
+.dm-feature-ng.bottom-padding-3, .dm-feature-ng.bottom-padding-3.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-3 {
+	padding-bottom: 30px;
+}
+
+.dm-feature-ng.bottom-padding-4, .dm-feature-ng.bottom-padding-4.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-4 {
+	padding-bottom: 40px;
+}
+
+.dm-feature-ng.bottom-padding-5, .dm-feature-ng.bottom-padding-5.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-5 {
+	padding-bottom: 50px;
+}
+
+.dm-feature-ng.bottom-padding-6, .dm-feature-ng.bottom-padding-6.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-6 {
+	padding-bottom: 60px;
+}
+
+.dm-feature-ng.bottom-padding-7, .dm-feature-ng.bottom-padding-7.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-7 {
+	padding-bottom: 70px;
+}
+
+.dm-feature-ng.bottom-padding-8, .dm-feature-ng.bottom-padding-8.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-8 {
+	padding-bottom: 80px;
+}
+
+.dm-feature-ng.bottom-padding-9, .dm-feature-ng.bottom-padding-9.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-9 {
+	padding-bottom: 90px;
+}
+
+.dm-feature-ng.bottom-padding-10, .dm-feature-ng.bottom-padding-10.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-10 {
+	padding-bottom: 100px;
+}
+
+.dm-feature-ng.bottom-padding-11, .dm-feature-ng.bottom-padding-11.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-11 {
+	padding-bottom: 110px;
+}
+
+.dm-feature-ng.bottom-padding-12, .dm-feature-ng.bottom-padding-12.horizontal.dm-feature-filled .dm-feature-element-content, .feature.bottom-padding-12 {
+	padding-bottom: 120px;
+}
+
+@media screen and (max-width: 568px) {
+	.dm-feature-ng.top-padding-0, .feature.top-padding-0 {
+		padding-top: 0;
+	}
+	
+	.dm-feature-ng.top-padding-1, .feature.top-padding-1 {
+		padding-top: 9px;
+	}
+	
+	.dm-feature-ng.top-padding-2, .feature.top-padding-2 {
+		padding-top: 18px;
+	}
+	
+	.dm-feature-ng.top-padding-3, .feature.top-padding-3 {
+		padding-top: 27px;
+	}
+	
+	.dm-feature-ng.top-padding-4, .feature.top-padding-4 {
+		padding-top: 36px;
+	}
+	
+	.dm-feature-ng.top-padding-5, .feature.top-padding-5 {
+		padding-top: 45px;
+	}
+	
+	.dm-feature-ng.top-padding-6, .feature.top-padding-6 {
+		padding-top: 54px;
+	}
+	
+	.dm-feature-ng.top-padding-7, .feature.top-padding-7 {
+		padding-top: 63px;
+	}
+	
+	.dm-feature-ng.top-padding-8, .feature.top-padding-8 {
+		padding-top: 72px;
+	}
+	
+	.dm-feature-ng.top-padding-9, .feature.top-padding-9 {
+		padding-top: 81px;
+	}
+	
+	.dm-feature-ng.top-padding-10, .feature.top-padding-10 {
+		padding-top: 90px;
+	}
+	
+	.dm-feature-ng.top-padding-11, .feature.top-padding-11 {
+		padding-top: 99px;
+	}
+	
+	.dm-feature-ng.top-padding-12, .feature.top-padding-12 {
+		padding-top: 108px;
+	}
+	
+	.dm-feature-ng.bottom-padding-0, .feature.bottom-padding-0 {
+		padding-bottom: 0;
+	}
+	
+	.dm-feature-ng.bottom-padding-1, .feature.bottom-padding-1 {
+		padding-bottom: 9px;
+	}
+	
+	.dm-feature-ng.bottom-padding-2, .feature.bottom-padding-2 {
+		padding-bottom: 18px;
+	}
+	
+	.dm-feature-ng.bottom-padding-3, .feature.bottom-padding-3 {
+		padding-bottom: 27px;
+	}
+	
+	.dm-feature-ng.bottom-padding-4, .feature.bottom-padding-4 {
+		padding-bottom: 36px;
+	}
+	
+	.dm-feature-ng.bottom-padding-5, .feature.bottom-padding-5 {
+		padding-bottom: 45px;
+	}
+	
+	.dm-feature-ng.bottom-padding-6, .feature.bottom-padding-6 {
+		padding-bottom: 54px;
+	}
+	
+	.dm-feature-ng.bottom-padding-7, .feature.bottom-padding-7 {
+		padding-bottom: 63px;
+	}
+	
+	.dm-feature-ng.bottom-padding-8, .feature.bottom-padding-8 {
+		padding-bottom: 72px;
+	}
+	
+	.dm-feature-ng.bottom-padding-9, .feature.bottom-padding-9 {
+		padding-bottom: 81px;
+	}
+	
+	.dm-feature-ng.bottom-padding-10, .feature.bottom-padding-10 {
+		padding-bottom: 90px;
+	}
+	
+	.dm-feature-ng.bottom-padding-11, .feature.bottom-padding-11 {
+		padding-bottom: 99px;
+	}
+	
+	.dm-feature-ng.bottom-padding-12, .feature.bottom-padding-12 {
+		padding-bottom: 108px;
+	}
+}
+
+.dm-feature-ng .dm-content a:not(.button) {
+	border-bottom: none;
+}
+
+.dm-feature-ng .dm-content a:not(.button):hover {
+	text-decoration: underline;
+}
+
+.dm-feature-ng.dm-feature-filled  .container, .dm-feature-ng.dm-feature-filled  .container .dm-feature-elements {
+	max-width: 100%;
+	width: 100%;
+}
+
+.dm-feature-ng.dm-feature-filled.horizontal .container .dm-feature-elements .dm-feature-element.dm-feature-element-content .text-container {
+	padding-left: 9%;
+	padding-right: 9%;
+}
+
+.dm-feature-ng.dm-feature-filled .dm-feature-element-media .image-container {
+	height: 100%;
+	width: 100%;
+	min-height: 500px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.dm-feature-ng.dm-feature-filled.horizontal .dm-feature-element-media .droppable-media-holder {
+	height: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+	.dm-feature-ng.horizontal .container .dm-feature-elements {
+		display: flex;
+	}
+	
+	.dm-feature-ng.horizontal .container .dm-feature-elements .dm-feature-element {
+		flex: 1 1 50%;
+	}
+	
+	.dm-feature-ng.horizontal:not(.dm-feature-filled) .container .dm-feature-element {
+		align-self: center;
+	}
+	
+	.dm-feature-ng.dm-feature-filled.horizontal .container .dm-feature-elements .dm-feature-element.dm-feature-element-media {
+		flex: 1 1 40%;
+	}
+	
+	.dm-feature-ng.dm-feature-filled.horizontal .container .dm-feature-elements .dm-feature-element.dm-feature-element-content {
+		flex: 1 1 60%;
+	}
+}
+
+.dm-feature-ng .dm-button-wrapper {
+	margin-top: 35px;
+	display: block;
+}
+
+.dm-feature-ng .dm-button-wrapper a {
+	display: inline-block;
+}
+
+@media screen and (max-width: 1024px) {
+	.dm-feature-ng .dm-button-wrapper>[ng-style], .dm-feature-ng .dm-button-wrapper {
+		text-align: center !important;
+	}
+}
+
+.feature a {
+	color: rgb(55, 55, 55);
+}

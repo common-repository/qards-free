@@ -1,0 +1,91 @@
+{
+    "text": {
+        "content": "<h1 style=\"line-height: 1.125;\"><strong><span style=\"font-family: 'Open Sans', sans-serif; color: #ffffff;letter-spacing: -0.01em;\">Mountains in Vermont</span></strong></h1><p style=\"line-height: 1.5;\"><span style=\"font-family: 'Open Sans', sans-serif; color: #ffffff; font-size: 1.875em;font-weight: 300;\"> We have combined many pre-designed blocks which you will need when building. </span></p><p style=\"line-height: 0.75\">&nbsp;</p><p style=\"line-height: 1.375;\"><span style=\"font-size: 1.375em; font-weight: 300; font-family: 'Open Sans', sans-serif; color: #ffffff;\">We have combined many pre-designed blocks which you will need when building.</span></p>",
+        "placeholder": "Type your text"
+    },
+    "media": {
+        "show": "image",
+        "bg_image": {
+            "src": {
+                "small": "templates\/ui-kit-cover\/img\/flower-12-small.jpg",
+                "base": "templates\/ui-kit-cover\/img\/flower-12.jpg"
+            }
+        },
+        "video": {
+            "id": "",
+            "quality": "default",
+            "firstFrame": "",
+            "startAt": "0",
+            "stopAt": "0"
+        }
+    },
+    "block_bg": {
+        "color": "#000",
+        "opacity": "0.05",
+        "type": "color"
+    },
+    "side_color": {
+        "color": "#000"
+    },
+    "button": {
+        "content": "<b>GET STARTED<\/b>",
+        "url": "",
+        "content-style": {
+            "text-align": "center",
+            "font-family": "'Open Sans', sans-serif",
+            "color": "#FFF"
+        },
+        "button-style": {
+            "border-width": "1px",
+            "border-style": "solid",
+            "background-color": "#2359b3",
+            "border-color": "#2359b3",
+            "border-radius": "50px",
+            "padding": "15px 55px"
+        },
+        "classes": [
+            "font-size-3",
+            "line-height-5"
+        ],
+        "target": false,
+        "placeholder": "Enter button text here..."
+    },
+    "button2": {
+        "content": "<b>LEARN MORE<\/b>",
+        "url": "",
+        "content-style": {
+            "text-align": "center",
+            "font-family": "'Open Sans', sans-serif",
+            "color": "#FFF"
+        },
+        "button-style": {
+            "border-width": "1px",
+            "border-style": "solid",
+            "background-color": "transparent",
+            "border-color": "#FFF",
+            "border-radius": "50px",
+            "padding": "15px 55px"
+        },
+        "classes": [
+            "font-size-3",
+            "line-height-5"
+        ],
+        "target": false,
+        "placeholder": "Enter button text here..."
+    },
+    "position": {
+        "index": "5",
+        "classes": "center middle"
+    },
+    "layout": {
+        "button": {
+            "label": "Show 1st Button",
+            "value": true
+        },
+        "button2": {
+            "label": "Show 2nd Button",
+            "value": true
+        }
+    },
+    "anchor": ""
+}

@@ -1,0 +1,192 @@
+<div
+    class="dm-template dm-cover"
+    {% if wp_mode %}
+        dm-template="cover.cover11"
+        component-id="{{ component_id }}"
+    {% if edit_mode is empty and anchor %} id="{{ anchor }}"{% endif %}
+    {% endif %}>
+    <section
+        {% if edit_mode %}
+            dm-cover
+            dm-media-preloader
+            class="cover parallax droppable-media-holder"
+            ng-class="getClassString(data)"
+        {% else %}
+            class="cover parallax {{ position.classes }} {% if layout.colors.value %}inverse{% endif %} {% if media.video.id %}video youtube{% endif %}"
+            style="background-color: {{ block_bg.color }}"
+        {% endif %}>
+        {% if edit_mode %}
+            <div
+                dm-image-width="{
+                    'small': '8',
+                    'base': '2400'
+                }"
+                dm-media-show="data.media.show"
+                dm-drop-image="data.media.bg_image.src.base">
+            </div>
+        {% endif %}
+        <div class="container-holder">
+            <div class="container">
+                <div class="holder">
+                    <div class="content">
+                        {% if edit_mode %}
+                            <div
+                                text-editing
+                                class="heading"
+                                text-editing-include="[paragraphs, heading, bold, italic, justify, anchor, color, fonts]"
+                                text-editing-default-paragraph="h1"
+                                ng-model="data.title"
+                                ng-show="data.layout.header.value">
+                            </div>
+                        {% else %}
+                            {% if layout.header.value %}
+                                {% for el in title.content %}
+                                    <{{ el.tagName }}
+                                            style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                                            class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                                        {{ el.html }}
+                                    </{{ el.tagName }}>
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                        {% if edit_mode %}
+                            <div
+                                text-editing
+                                class="hero-holder"
+                                text-editing-include="[paragraphs, heading, bold, italic, justify, anchor, color, fonts]"
+                                text-editing-default-paragraph="hero"
+                                ng-model="data.text"
+                                ng-show="data.layout.hero.value">
+                                    {{ text.content }}
+                            </div>
+                        {% else %}
+                            {% if layout.hero.value %}
+                                {% for el in text.content %}
+                                    <{{ el.tagName }}
+                                            style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                                            class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                                        {{ el.html }}
+                                    </{{ el.tagName }}>
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                        {% if edit_mode %}
+                            <div
+                                button-editing
+                                button-editing-include="[bold, italic, justify, anchor, color, fonts, border]"
+                                button-editing-is-button="true"
+                                ng-model="data.button"
+                                ng-show="data.layout.button.value"></div>
+                        {% else %}
+                            {% if layout.button.value %}
+                                <div style="{% for s, v in button['content-style'] %}{{ s }}: {{ v }}; {% endfor %}">
+                                    <a
+                                        class="{% if button['button-style'] %}button stroke{% endif %} {% for c in button.classes %} {{ c }} {% endfor %}"
+                                        style="{% for s, v in button['button-style'] %}{{ s }}: {{ v }}; {% endfor %}"
+                                        href="{{ button.url }}"
+                                        {% if button.target %} target="_blank" {% endif %}>
+                                        {{ button.content }}
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if edit_mode %}
+        <div
+            class="background-holder"
+            ng-show="data.media.show === 'image'">
+            <div
+                class="background"
+                ng-style="{
+                    'background-image': 'url({{ pluginUrl }}' + data.media.bg_image.src.base + ')',
+                }">
+            </div>
+        </div>
+        <div
+            class="background-holder"
+            ng-show="data.media.show === 'video'">
+            <div
+                class="background video-background"
+                data-property="{
+                    videoURL: '[[ data.media.video.id ]]',
+                    quality: '[[ data.media.video.quality ]]',
+                    startAt: [[ data.media.video.startAt ]],
+                    stopAt: [[ data.media.video.stopAt ]]
+                }">
+            </div>
+            <div
+                class="video-overlay"
+                ng-show="data.media.video.firstFrame"
+                ng-style="{
+                    'background-image': 'url({{ pluginUrl }}' + data.media.video.firstFrame + ')',
+                }">
+            </div>
+        </div>
+        <div class="section-bg" ng-style="{'background-color': data.block_bg.color, 'opacity': data.block_bg.opacity }"></div>
+        {% else %}
+        <div class="backgroud-wrapper">
+            {% if media.show == 'image' %}
+            <div class="background-holder">
+                <div class="background" style="background-image: url({{ pluginUrl }}{{ media.bg_image.src.base }});"></div>
+            </div>
+            {% endif %}
+            {% if media.show == 'video' %}
+            <div
+                class="background-holder">
+                <div
+                    class="background"
+                    data-property="{
+                        videoURL: '{{ media.video.id }}',
+                        quality: '{{ media.video.quality }}',
+                        startAt: {{ media.video.startAt }},
+                        stopAt: {{ media.video.stopAt }}
+                    }"
+                    style="background-image: url({{ pluginUrl }}{{ media.video.firstFrame }});">
+                </div>
+            </div>
+            {% endif %}
+            <div class="section-bg" style="background-color: {{ block_bg.color }}; opacity: {{ block_bg.opacity }}"></div>
+        </div>
+        {% endif %}
+    </section>
+    {% if edit_mode %}
+        <div class="dm-widget-main align-center" data-html2canvas-ignore ng-class="{'hide-opacity-widget': !data.media.bg_image.src.base || data.media.bg_image.src.base == 'img/1x1.png'}">
+    <div class="dm-widget">
+        <div class="dm-widget-item" dm-widget-drop-down>
+            <div dm-upload-media>
+                <div dm-upload-drop-down-image>
+                    <div dm-wp-media-library
+                         dm-media-show="data.media.show"
+                         dm-selected-image="data.media.bg_image.src.base">
+                    </div>
+                </div>
+                <div dm-upload-drop-down-video>
+                    <div
+                        dm-upload-video="data.media.video.id"
+                        dm-upload-video-quality="data.media.video.quality"
+                        dm-upload-video-first-frame="data.media.video.firstFrame"
+                        dm-upload-video-first-frame-image-width="{'base': '2400'}"
+                        dm-upload-video-start-at="data.media.video.startAt"
+                        dm-upload-video-stop-at="data.media.video.stopAt"
+                        dm-media-show="data.media.show">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dm-widget-item dm-cover-layout" dm-widget-drop-down>
+            <div dm-cover-position="data.position" dm-cover-layout="data.layout" dm-cover-layout-title="data.title.content[0].style.color" dm-cover-layout-text="data.text.content[0].style.color" dm-cover-layout-bg="data.bg_color"></div>
+        </div>
+        <div class="dm-widget-item dm-bg-options" dm-widget-drop-down>
+            <div dm-bg-options="['opacity', 'color']" dm-bg-options-color="data.block_bg.color" dm-bg-options-opacity="data.block_bg.opacity" dm-bg-options-type="data.block_bg.type"></div>
+        </div>
+        <div class="dm-widget-item" dm-widget-drop-down>
+            <div dm-tools='["move", "duplicate", "customCSS", "anchor", "remove"]' anchor-value="data.anchor"></div>
+        </div>
+    </div>
+</div>
+    {% endif %}
+</div>

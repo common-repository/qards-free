@@ -1,0 +1,18 @@
+<div class="dm-widget-item" dm-widget-drop-down ng-show="data.layout.image.value">
+    <div dm-upload-media>
+        <div dm-upload-drop-down-image>
+            <div dm-wp-media-library
+                 dm-media-show="grid_item.media.show"
+                 dm-selected-image="grid_item.media.bg_image.src.base">
+            </div>
+        </div>
+        <div dm-upload-drop-down-video>
+            <div
+                dm-upload-video="grid_item.media.video.id"
+                dm-upload-video-autoplay="grid_item.media.video.autoplay"
+                dm-upload-video-controls="grid_item.media.video.controls"
+                dm-media-show="grid_item.media.show">
+            </div>
+        </div>
+    </div>
+</div>

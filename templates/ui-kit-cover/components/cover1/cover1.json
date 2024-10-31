@@ -1,0 +1,107 @@
+{
+    "title": {
+        "content": [
+            {
+                "tagName": "h1",
+                "html": "Photos",
+                "style": {
+                    "color": "#ffffff",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-weight": "bold",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Start with a title"
+    },
+    "text": {
+        "content": [
+            {
+                "tagName": "p",
+                "html": "We have combined many pre-designed blocks which you will need when building.",
+                "style": {
+                    "color": "#ffffff",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "hero",
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Type your caption text"
+    },
+    "media": {
+        "show": "image",
+        "bg_image": {
+            "src": {
+                "small": "templates\/ui-kit-cover\/img\/legs-small.jpg",
+                "base": "templates\/ui-kit-cover\/img\/legs.jpg"
+            }
+        },
+        "video": {
+            "id": "",
+            "quality": "default",
+            "firstFrame": "",
+            "startAt": "0",
+            "stopAt": "0"
+        }
+    },
+    "block_bg": {
+        "color": "#000",
+        "opacity": ".4",
+        "type": "color"
+    },
+    "button": {
+        "content": "BUY NOW",
+        "url": "",
+        "content-style": {
+            "text-align": "left",
+            "font-family": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "color": "#FFF"
+        },
+        "button-style": {
+            "border-width": "2px",
+            "border-style": "solid",
+            "background-color": "transparent",
+            "border-color": "#FFF",
+            "border-radius": "45px",
+            "padding": "10px 25px"
+        },
+        "classes": [
+            "font-size-2",
+            "line-height-2"
+        ],
+        "target": false,
+        "placeholder": "Enter button text here..."
+    },
+    "position": {
+        "index": "1",
+        "classes": "left top"
+    },
+    "layout": {
+        "header": {
+            "label": "Show Header",
+            "value": true
+        },
+        "hero": {
+            "label": "Show Hero",
+            "value": true
+        },
+        "button": {
+            "label": "Show Button",
+            "value": true
+        },
+        "colors": {
+            "label": "Inverse Colors",
+            "value": false
+        }
+    },
+    "anchor": ""
+}

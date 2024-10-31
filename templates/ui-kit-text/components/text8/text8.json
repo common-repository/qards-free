@@ -1,0 +1,22 @@
+{
+    "text": {
+        "content": "<h2 style=\"line-height: 0.875;\"><strong><span style=\"font-size: 1.25em; color: rgb(66, 66, 66); font-family: 'Open Sans', sans-serif;\">Contextual Advertising</span></strong></h2><p style=\"line-height: 2;\"><span style=\"font-family: 'Open Sans', sans-serif; font-weight: 100; font-size: 1.875em;\">Profiles Of The Powerful Advertising Exec Steve Grasse</span></p><p style=\"line-height: 1.75;text-align: justify;\"><span style=\"font-family: 'Open Sans', sans-serif; font-size: 1.125em;\">If you are looking for great ways to decorate your home or office, then you know as well as I do that you have nearly countless options. There are so many ways to decorate that it can easily be very overwhelming to find the right things that are in the right budget. As an interior designer, I am often meeting with clients who are overwhelmed with their options and who are having trouble staying within a budget. I often suggest art posters to these kinds of clients.</span></p>",
+        "placeholder": "Write your message here...",
+        "width" : 4,
+        "position": "center"
+    },
+    "block_bg": {
+        "color": "#ffffff",
+        "opacity": "1",
+        "image": "",
+        "gradient": "",
+        "gradient_type": "default",
+        "angle": "90",
+        "type": "color"
+    },
+    "paddings": {
+        "top": 4,
+        "bottom": 4
+    },
+    "anchor": ""
+}

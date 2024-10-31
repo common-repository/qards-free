@@ -1,0 +1,190 @@
+<div
+    {% if edit_mode %}
+        class="dm-template dm-menu menu1-{{ component_id }}"
+        ng-class="{
+            'sticky': data.sticky,
+        }"
+    {% else %}
+        class="dm-template dm-menu menu1-{{ component_id }}{% if sticky %} sticky{% endif %}"
+    {% endif %}
+    {% if wp_mode %}
+        dm-template="menu.menu1"
+        component-id="{{ component_id }}"
+    {% endif %}>
+    {% if edit_mode %}
+    <nav
+        class="menu"
+        ng-class="{
+            'sticky': data.sticky,
+            'column-1': data.links.show == false && data.button.show == false,
+            'column-2': data.links.show == true || data.button.show == true,
+            'column-3': data.links.show == true && data.button.show == true
+        }">
+        <div
+            class="section-bg"
+            ng-style="{
+                'background-color': data.bg_color,
+                'opacity': data.opacity
+        }"></div>
+        <ul class="sections">
+            <li
+                class="logo"
+                ng-class=" {
+                    'center': data.links.show != true && data.button.show != true,
+                    'left crop': data.links.show == true,
+                }">
+                <div class="dm-inline-image-wrapper">
+                    <div class="dm-widget-main align-center bottom" data-html2canvas-ignore>
+                        <div class="dm-widget has-arrow top">
+                            <div
+                                class="dm-widget-item"
+                                dm-image-width="{
+                                    'base': '300'
+                                }"
+                                dm-upload-image="data.brand.src.base"
+                                dm-show-icon="default">
+                            </div>
+                            <div class="dm-widget-item" dm-widget-drop-down='replace'>
+                                <div dm-image-link="data.brand.url"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <img
+                        alt="Designmodo"
+                        height="25"
+                        ng-src="{{ pluginUrl }}[[ data.brand.src.base ]]"/>
+                </div>
+            </li>
+            <li
+                class="wide"
+                ng-class="{
+                    'left': data.links.align == 'left',
+                    'center': data.links.align == 'center',
+                    'right': data.links.align == 'right',
+                    'last-child': data.button.show == false
+                }"
+                ng-if="data.links.show">
+                <div
+                    class="menu-holder"
+                    ng-style="{
+                        'font-weight': data.links.style.bold,
+                        'font-style': data.links.style.italic,
+                        'color': data.links.style.color,
+                        'opacity': data.links.style.opacity,
+                        'font-family': data.links.style.fontFamily
+                    }"
+                    ng-class="[ 'font-size-' + data.links.style.fontSize, 'line-height-' + data.links.style.lineHeight ]">
+                    {% macro render_one_line_menu(items) %}
+                        <ul class="items">
+                            {% for item in items %}
+                                <li {% if item.current %}class="current"{% endif %}>
+                                    <a href="{{ item.url }}">{{ item.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endmacro %}
+                    {% if wp_mode %}
+                        {{ _self.render_one_line_menu(mainMenu.items) }}
+                    {% else %}
+                        {{ _self.render_one_line_menu(menu) }}
+                    {% endif %}
+                </div>
+            </li>
+            <li
+                class="right"
+                ng-if="data.button.show">
+                <div
+                    button-editing
+                    button-editing-include="[bold, italic, anchor, color, fonts, border]"
+                    button-editing-is-button="true"
+                    ng-model="data.button"></div>
+            </li>
+        </ul>
+        <div
+            class="burger"
+            ng-show="data.links.show">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 16 20 20" enable-background="new -10 16 20 20">
+                <path d="M-8.5 32h17"/>
+                <path d="M-8.5 26h17"/>
+                <path d="M-8.5 20h17"/>
+            </svg>
+        </div>
+    </nav>
+    <div class="dm-widget-main dm-widget-main-drop align-center bottom" data-html2canvas-ignore>
+        <div class="dm-widget has-arrow top">
+            <div class="dm-widget-item" dm-widget-drop-down='replace'>
+                <div
+                    dm-menu
+                    dm-menu-sticky="data.sticky"
+                    dm-menu-links-align="data.links.align"
+                    dm-menu-links-visibility="data.links.show"
+                    dm-menu-button-visibility="data.button.show"
+                    dm-menu-external-nav="{{ menuEditPageUriPattern|format(mainMenu.id) }}">
+                </div>
+            </div>
+            <div class="dm-widget-item dm-bg-options" dm-widget-drop-down="replace">
+                <div dm-bg-options="['opacity', 'color']" dm-bg-options-color="data.bg_color" dm-bg-options-opacity="data.opacity" dm-bg-options-type="data.bg_color_type"></div>
+            </div>
+            <div ng-show="data.links.show" class="dm-widget-item" dm-widget-drop-down="replace">
+                <div dm-text-editing-menu="data.links.style"></div>
+            </div>
+            <div class="dm-widget-item" dm-widget-drop-down='replace'>
+                <div dm-tools='["customCSS", "remove"]'></div>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+    <nav class="menu {% if sticky %} sticky{% endif %} {% if links.show == false and button.show == false %} column-1{% endif %} {% if links.show == true or button.show == true %} column-2{% endif %} {% if links.show == true and button.show == true %} column-3{% endif %}">
+        <div class="section-bg" style="background-color: {{ bg_color }}; opacity: {{ opacity }}"></div>
+        <ul class="sections">
+            <li class="logo {% if links.show == false and button.show == false %} center{% endif %} {% if links.show == true %} left crop{% endif %}">
+                <a href="{{ brand.url }}">
+                    <img
+                        alt="Designmodo"
+                        height="25"
+                        src="{{ pluginUrl }}{{ brand.src.base }}"  />
+                </a>
+            </li>
+            {% if links.show == true %}
+                <li class="wide {{ links.align }} {% if button.show == false %} last-child{% endif %} font-size-{{ links.style.fontSize }} line-height-{{links.style.lineHeight}}" style="font-weight: {{ links.style.bold }}; opacity: {{ links.style.opacity }}; font-style: {{ links.style.italic }}; color: {{ links.style.color }}; font-family: {{ links.style.fontFamily }}">
+                    {% macro render_one_line_menu(items) %}
+                        <ul class="items">
+                            {% for item in items %}
+                                <li {% if item.current %}class="current"{% endif %}>
+                                    <a href="{{ item.url }}">{{ item.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endmacro %}
+                    {% if wp_mode %}
+                        {{ _self.render_one_line_menu(mainMenu.items) }}
+                    {% else %}
+                        {{ _self.render_one_line_menu(menu) }}
+                    {% endif %}
+                </li>
+            {% endif %}
+            {% if button.show == true %}
+                <li class="right">
+                    <a
+                        class="{% if button['button-style'] %}button{% endif %} {% for c in button.classes %} {{ c }} {% endfor %}"
+                        style="{% for s, v in button['button-style'] %}{{ s }}: {{ v }}; {% endfor %} {% for s, v in button['content-style'] %}{{ s }}: {{ v }}; {% endfor %}"
+                        href="{{ button.url }}"
+                        {% if button.target %} target="_blank" {% endif %}>
+                        {{ button.content }}
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+        {% if links.show == true %}
+        <div class="burger">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 16 20 20" enable-background="new -10 16 20 20">
+                <path d="M-8.5 32h17"/>
+                <path d="M-8.5 26h17"/>
+                <path d="M-8.5 20h17"/>
+            </svg>
+        </div>
+        {% endif %}
+    </nav>
+    {% endif %}
+</div>

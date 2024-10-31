@@ -1,0 +1,180 @@
+<div
+    class="dm-template dm-footer footer1-{{ component_id }}"
+    {% if wp_mode %}
+        dm-template="footer.footer1"
+        component-id="{{ component_id }}"
+    {% if edit_mode is empty and anchor %} id="{{ anchor }}"{% endif %}
+    {% endif %}>
+    {% if edit_mode %}
+    <section class="footer without-text-editing"
+        top-padding-old
+        bottom-padding-old
+        dm-footer
+        dm-padding-draggable-top
+        dm-padding-draggable-bottom
+        ng-class="getClassString(data)">
+        <div
+            ng-if="data.block_bg.type == 'image'"
+            class="section-bg section-image"
+            ng-style="{'background-image': 'url({{ pluginUrl }}' + data.block_bg.image + ')' }"></div>
+        <div
+            ng-if="data.block_bg.type == 'color'"
+            class="section-bg section-color"
+            ng-style="{'background-color': data.block_bg.color, 'opacity': data.block_bg.opacity}"></div>
+        <div ng-if="data.block_bg.type == 'gradient'">
+            <div
+                ng-if="!data.block_bg.gradient[2]"
+                class="section-bg section-gradient"
+                ng-style="{
+                    'background': 'linear-gradient(' + data.block_bg.angle + 'deg,  ' + data.block_bg.gradient[0].color + ' ' + data.block_bg.gradient[0].x + '%, ' + data.block_bg.gradient[1].color + ' ' + data.block_bg.gradient[1].x + '%)'
+                }"></div>
+            <div
+                ng-if="data.block_bg.gradient[2]"
+                class="section-bg section-gradient"
+                ng-style="{
+                    'background': 'linear-gradient(' + data.block_bg.angle + 'deg,  ' + data.block_bg.gradient[0].color + ' ' + data.block_bg.gradient[0].x + '%, ' + data.block_bg.gradient[1].color + ' ' + data.block_bg.gradient[1].x + '%, ' + data.block_bg.gradient[2].color + ' ' + data.block_bg.gradient[2].x + '%)'
+                }"></div>
+        </div>
+        <div
+            class="container"
+            ng-style="{
+                'text-align': data.align
+            }">
+            <div ng-if="data.brand.show" class="dm-inline-image-wrapper">
+                
+                <div class="dm-widget-main align-center top" data-html2canvas-ignore>
+    <div class="dm-widget has-arrow bottom">
+        <div dm-upload-drop-down-image>
+            <div dm-wp-media-library
+                 dm-media-show=""
+                 dm-selected-image="data.brand.src.base">
+            </div>
+        </div>
+        <div class="dm-widget-item" dm-widget-drop-down='replace'>
+            <div dm-image-link="data.brand.url"></div>
+        </div>
+    </div>
+</div>
+
+                <img alt="" height="25" ng-src="{{ pluginUrl }}[[ data.brand.src.base ]]"/>
+            </div>
+            <div ng-if="data.text.show"
+                 text-editing
+                 text-editing-include="[paragraphs, bold, italic, anchor, color, fonts]"
+                 ng-model="data.text">
+            </div>
+            <div
+                ng-if="data.links.show"
+                ng-style="{
+                    'font-weight': data.links.style.bold,
+                    'font-style': data.links.style.italic,
+                    'color': data.links.style.color,
+                    'opacity': data.links.style.opacity,
+                    'font-family': data.links.style.fontFamily
+                }"
+                ng-class="[ 'font-size-' + data.links.style.fontSize, 'line-height-' + data.links.style.lineHeight ]">
+                {% macro render_one_line_menu(items) %}
+                    <ul class="items">
+                        {% for item in items %}
+                            <li>
+                                <a href="{{ item.url }}">{{ item.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endmacro %}
+                {% if wp_mode %}
+                    {{ _self.render_one_line_menu(footerMenu.items) }}
+                {% else %}
+                    {{ _self.render_one_line_menu(menu) }}
+                {% endif %}
+            </div>
+            <div class="dm-widget-main dm-widget-main-drop dm-widget-footer align-center top" data-html2canvas-ignore>
+                <div class="dm-widget has-arrow bottom">
+                    <div class="dm-widget-item" dm-widget-drop-down='replace'>
+                        <div
+                            dm-footer-settings
+                            dm-footer-align="data.align"
+                            dm-footer-text-visibility="data.text.show"
+                            dm-footer-brand-visibility="data.brand.show"
+                            dm-footer-links-visibility="data.links.show"
+                            dm-footer-external-nav="{{ menuEditPageUriPattern|format(footerMenu.id) }}">
+                        </div>
+                    </div>
+                    <div class="dm-widget-item dm-bg-options" dm-widget-drop-down="replace">
+                        <div dm-bg-options="['opacity', 'color', 'gradient', 'navigation']" dm-bg-options-color="data.block_bg.color" dm-bg-options-opacity="data.block_bg.opacity" dm-bg-options-gradient="data.block_bg.gradient" dm-bg-options-gradient-type="data.block_bg.gradient_type" dm-bg-options-type="data.block_bg.type" dm-bg-options-angle="data.block_bg.angle"></div>
+                    </div>
+                    <div ng-show="data.links.show" class="dm-widget-item" dm-widget-drop-down="replace">
+                        <div dm-text-editing-menu="data.links.style"></div>
+                    </div>
+                    <div class="dm-widget-item" dm-widget-drop-down='replace'>
+                        <div dm-tools='["move", "duplicate", "appearance", "customCSS", "remove", "anchor"]' anchor-value="data.anchor" top-padding="data.paddings.top" bottom-padding="data.paddings.bottom"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% else %}
+    <section class="footer logo without-text-editing top-padding-{{ paddings.top }} bottom-padding-{{ paddings.bottom }}">
+        {% if block_bg.type == 'image' %}
+            <div
+                class="section-bg section-image"
+                style="background-image: url({{ pluginUrl }}{{ block_bg.image }});"></div>
+        {% elseif block_bg.type == 'color' %}
+            <div
+                class="section-bg section-color"
+                style="background-color: {{ block_bg.color }}; opacity: {{ block_bg.opacity }};"></div>
+        {% elseif block_bg.type == 'gradient' %}
+            {% if block_bg.gradient[2] %}
+                <div
+                    class="section-bg section-gradient"
+                    style="
+                        background: linear-gradient({{ block_bg.angle }}deg, {{ block_bg.gradient[0].color }} {{ block_bg.gradient[0].x }}%, {{ block_bg.gradient[1].color }} {{ block_bg.gradient[1].x }}%, {{ block_bg.gradient[2].color }} {{ block_bg.gradient[2].x }}%);
+                    "></div>
+            {% else %}
+                <div
+                    class="section-bg section-gradient"
+                    style="
+                        background: linear-gradient({{ block_bg.angle }}deg, {{ block_bg.gradient[0].color }} {{ block_bg.gradient[0].x }}%, {{ block_bg.gradient[1].color }} {{ block_bg.gradient[1].x }}%);
+                    "></div>
+            {% endif %}
+        {% endif %}
+        <div class="container" style="text-align: {{ align }}">
+            {% if brand.show == true %}
+                <a href="{{ brand.url }}" class="brand">
+                    <img
+                        alt="Designmodo"
+                        height="25"
+                        src="{{ pluginUrl }}{{ brand.src.base }}"  />
+                </a>
+            {% endif %}
+            {% if text.show == true %}
+                {% for el in text.content %}
+                    <{{ el.tagName }}
+                            style="{% for s, v in el.style %} {{ s }}: {{ v }}; {% endfor %}"
+                            class="{% for c in el.classes %} {{ c }} {% endfor %}">
+                        {{ el.html }}
+                    </{{ el.tagName }}>
+                {% endfor %}
+            {% endif %}
+            {% if links.show == true %}
+                <div class="font-size-{{ links.style.fontSize }} line-height-{{links.style.lineHeight}}" style="font-weight: {{ links.style.bold }}; opacity: {{ links.style.opacity }}; font-style: {{ links.style.italic }}; color: {{ links.style.color }}; font-family: {{ links.style.fontFamily }}">
+                    {% macro render_one_line_menu(items) %}
+                        <ul class="items">
+                            {% for item in items %}
+                                <li>
+                                    <a href="{{ item.url }}">{{ item.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endmacro %}
+                    {% if wp_mode %}
+                        {{ _self.render_one_line_menu(footerMenu.items) }}
+                    {% else %}
+                        {{ _self.render_one_line_menu(menu) }}
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
+</div>

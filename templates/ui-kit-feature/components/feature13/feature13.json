@@ -1,0 +1,48 @@
+{
+    "media": {
+        "show": "image",
+        "image": {
+            "src": {
+                "small": "templates\/ui-kit-feature\/img\/carousel-small.jpg",
+                "base": "templates\/ui-kit-feature\/img\/carousel.jpg"
+            },
+            "url": ""
+        },
+        "video": {
+            "id": "",
+            "autoplay": false,
+            "controls" : false
+        }
+    },
+    "text":{
+        "content": "<h2><strong>Thirty Years of Traveler</strong></h2><p style=\"line-height: 1.875;\"><span style=\"font-family: 'Open Sans', sans-serif; font-weight: 300; font-size: 1.25em;\">The Sun's altitude in New York today. The horizontal line signifies the horizon, the vertical lines show the times of sunrise and sunset.</span></p><p style=\"line-height: 1.875;\"><a href=\"#\" style=\"color: #4b73b7;\">Take a Look &rsaquo;<\/a></p>"
+    },
+    "size": {
+        "index": "2",
+        "class": "large"
+    },
+    "position": {
+        "index": "1",
+        "class": "top"
+    },
+    "layout": {
+        "text": {
+            "label": "Show Text",
+            "value": true
+        }
+    },
+    "block_bg": {
+        "color": "#ffffff",
+        "opacity": "1",
+        "image": "",
+        "gradient": "",
+        "gradient_type": "default",
+        "angle": "90",
+        "type": "color"
+    },
+    "paddings": {
+        "top": 12,
+        "bottom": 4
+    },
+    "anchor": ""
+}

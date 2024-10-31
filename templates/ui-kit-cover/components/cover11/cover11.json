@@ -1,0 +1,107 @@
+{
+    "title": {
+        "content": [
+            {
+                "tagName": "h1",
+                "html": "<br\/>",
+                "style": {
+                    "color": "#ffffff",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-weight": "bold",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Start with a title"
+    },
+    "text": {
+        "content": [
+            {
+                "tagName": "p",
+                "html": "<br\/>",
+                "style": {
+                    "color": "#ffffff",
+                    "font-family": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+                    "font-style": "normal"
+                },
+                "classes": [
+                    "hero",
+                    "font-size-4",
+                    "line-height-4"
+                ]
+            }
+        ],
+        "placeholder": "Type your caption text"
+    },
+    "media": {
+        "show": "image",
+        "bg_image": {
+            "src": {
+                "small": "templates\/ui-kit-cover\/img\/pier-small.jpg",
+                "base": "templates\/ui-kit-cover\/img\/pier.jpg"
+            }
+        },
+        "video": {
+            "id": "",
+            "quality": "default",
+            "firstFrame": "",
+            "startAt": "0",
+            "stopAt": "0"
+        }
+    },
+    "block_bg": {
+        "color": "#000",
+        "opacity": "0",
+        "type": "color"
+    },
+    "button": {
+        "content": "<br\/>",
+        "url": "",
+        "content-style": {
+            "text-align": "center",
+            "font-family": "'Helvetica Neue', Helvetica, Arial, sans-serif",
+            "color": "#FFF"
+        },
+        "button-style": {
+            "border-width": "2px",
+            "border-style": "solid",
+            "background-color": "transparent",
+            "border-color": "#FFF",
+            "border-radius": "45px",
+            "padding": "10px"
+        },
+        "classes": [
+            "font-size-2",
+            "line-height-2"
+        ],
+        "target": false,
+        "placeholder": "Enter button text here..."
+    },
+    "position": {
+        "index": "5",
+        "classes": "center middle"
+    },
+    "layout": {
+        "header": {
+            "label": "Show Header",
+            "value": false
+        },
+        "hero": {
+            "label": "Show Hero",
+            "value": false
+        },
+        "button": {
+            "label": "Show Button",
+            "value": false
+        },
+        "colors": {
+            "label": "Inverse Colors",
+            "value": false
+        }
+    },
+    "anchor": ""
+}

@@ -1,0 +1,42 @@
+            </div>
+        </div>
+        <script>
+            var doc = document.documentElement;
+            doc.setAttribute('data-useragent', navigator.userAgent);
+        </script>
+        {{ function('wp_footer') }}
+
+        <script>window.jQuery ||
+            document.write("<script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'>\x3C/script>");
+            if(typeof window.$ == 'undefined') window.$ = window.jQuery;
+        </script>
+
+        {{ compScripts }}
+
+        <script>
+            var _onYouTubePlayerAPIReady = window.onYouTubePlayerAPIReady;
+            window.onYouTubePlayerAPIReady = function () {_onYouTubePlayerAPIReady();onYouTubePlayerAPIReadyOverride();};
+        </script>
+        {% if DM_SHOW_PROMO_BANNER %}
+            <!-- promote banner -->
+                <style>
+                    a.qards-promote{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;display:none;position:fixed;bottom:20px;right:20px;z-index:999;font-family:helvetica neue,helvetica,arial,sans-serif;background:rgba(0, 0, 0, 0.4);border:2px solid rgba(66,66,66,0);padding:21px 13px;line-height:0;border-radius:25px;height:50px;width:50px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,0.1);fill:rgba(255,255,255,.85);color:rgba(255,255,255,.85);text-decoration:none;-webkit-transition:.35s cubic-bezier(.6,0,.4,1);-moz-transition:.35s cubic-bezier(.6,0,.4,1);-o-transition:.35s cubic-bezier(.6,0,.4,1);transition:.35s cubic-bezier(.6,0,.4,1);overflow:hidden;cursor:pointer;-webkit-animation:show-up-promote .5s 1.5s cubic-bezier(.17,1.34,.66,1) backwards;-moz-animation:show-up-promote .5s 1.5s cubic-bezier(.17,1.34,.66,1) backwards;-o-animation:show-up-promote .5s 1.5s cubic-bezier(.17,1.34,.66,1) backwards;animation:show-up-promote .5s 1.5s cubic-bezier(.17,1.34,.66,1) backwards;-webkit-transform: translate3d(0,0,0)}
+                    @-webkit-keyframes show-up-promote {from{-webkit-transform:scale(0) rotate(-180deg);transform:scale(0) rotate(-180deg)}}
+                    @-moz-keyframes show-up-promote {from{-moz-transform:scale(0) rotate(-180deg);transform:scale(0) rotate(-180deg)}}
+                    @-o-keyframes show-up-promote {from{-o-transform:scale(0) rotate(-180deg);transform:scale(0) rotate(-180deg)}}
+                    @keyframes show-up-promote {from{-webkit-transform:scale(0) rotate(-180deg);-moz-transform:scale(0) rotate(-180deg);-o-transform:scale(0) rotate(-180deg);transform:scale(0) rotate(-180deg)}}
+                    a.qards-promote:hover,a.qards-promote:active{fill:rgba(255,255,255,.85);width:200px;background:rgba(33,33,33,0.85);-webkit-transition-duration:.55s;-moz-transition-duration:.55s;-o-transition-duration:.55s;transition-duration:.55s}
+                    a.qards-promote svg{position:absolute;top:11px;left:11px}
+                    a.qards-promote strong{letter-spacing:-.25px;opacity:0;position:relative;top:2px;padding-left:36px;padding-right:16px;opacity:0;display:block;white-space:nowrap;-webkit-transition:.45s cubic-bezier(.6,0,.4,1);-moz-transition:.45s cubic-bezier(.6,0,.4,1);-o-transition:.45s cubic-bezier(.6,0,.4,1);transition:.45s cubic-bezier(.6,0,.4,1);-webkit-transform:translateX(20px);-moz-transform:translateX(20px);-ms-transform:translateX(20px);-o-transform:translateX(20px);transform:translateX(20px)}
+                    a.qards-promote:hover strong,a.qards-promote:active strong{opacity:1;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);-o-transform:translateY(0);transform:translateY(0)}
+                </style>
+                <a href="http://designmodo.com/qards/" target="_blank" rel="nofollow" class="qards-promote" id="qards_promo_banner"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M20.5 20.5l-.4-.4-6.1-6.1v3.8l2.4 2.4c-1.3.7-2.8 1.1-4.4 1.1-5.1 0-9.3-4.2-9.3-9.3s4.2-9.3 9.3-9.3 9.3 4.2 9.3 9.3c0 1.9-.6 3.7-1.6 5.2l1.5 2.5c1.8-2.2 2.8-4.8 2.8-7.7 0-6.6-5.4-12-12-12s-12 5.4-12 12 5.4 12 12 12c2.3 0 4.5-.7 6.4-1.8l1.8 1.8h3.8l-3.5-3.5z"/></svg><strong>Made with Qards</strong></a>
+                <script type="text/javascript"> jQuery(window).load(function(){if (DM_SHOW_PROMO_BANNER && !editMode && currentPostId) {document.querySelector('#qards_promo_banner').style.display = 'block';}}); </script>
+            <!-- end promote banner -->
+        {% endif %}
+
+        {% if edit_mode is empty %}
+            {{ SETTING_WP_FOOTER|phpeval }}
+        {% endif %}
+    </body>
+</html>

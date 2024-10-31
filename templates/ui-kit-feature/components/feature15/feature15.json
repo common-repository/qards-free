@@ -1,0 +1,48 @@
+{
+    "media": {
+        "show": "image",
+        "image": {
+            "src": {
+                "small": "templates\/ui-kit-feature\/img\/watch-small.jpg",
+                "base": "templates\/ui-kit-feature\/img\/watch.jpg"
+            },
+            "url": ""
+        },
+        "video": {
+            "id": "",
+            "autoplay": false,
+            "controls" : false
+        }
+    },
+    "text":{
+        "content": "<h2><strong>Thirty Years of Traveler</strong></h2><p style=\"line-height: 1.875;\"><span style=\"font-family: 'Open Sans', sans-serif; font-weight: 300; font-size: 1.25em;\">Alice wondered a little at this, but she was too much in awe of the Queen to disable it. \"I'll try it when I go home,\" she thought to herself, \"the next time I'm a little late for dinner\".</span></p><p style=\"line-height: 1.875;\"><a href=\"#\" style=\"color: #4b73b7;\">Get more &rsaquo;<\/a></p>"
+    },
+    "size": {
+        "index": "1",
+        "class": "small"
+    },
+    "position": {
+        "index": "4",
+        "class": "right"
+    },
+    "layout": {
+        "text": {
+            "label": "Show Text",
+            "value": true
+        }
+    },
+    "block_bg": {
+        "color": "#ffffff",
+        "opacity": "1",
+        "image": "",
+        "gradient": "",
+        "gradient_type": "default",
+        "angle": "90",
+        "type": "color"
+    },
+    "paddings": {
+        "top": 12,
+        "bottom": 4
+    },
+    "anchor": ""
+}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html {{site.language_attributes}} {% if edit_mode %} ng-app="dmApp"{% endif %}>
+<!--[if lt IE 7]><html class="no-js ie ie6 lt-ie9 lt-ie8 lt-ie7" {{site.language_attributes}}> <![endif]-->
+<!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{site.language_attributes}}> <![endif]-->
+<!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{site.language_attributes}}> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" {{site.language_attributes}}> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{ function('wp_title') }}{# % if edit_mode %}{{ wp_title }}{% else %}{{ wp_title }}{% if SETTING_SITE_TITLE %} | {{ SETTING_SITE_TITLE }}{% endif %}{% endif % #}</title>
+
+    {% if is_WPSEO_VERSION_or_AIOSEOP_VERSION is empty %}
+        <meta name="description" content="{{site.description}}">
+    {% endif %}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="pingback" href="{{site.pingback_url}}" />
+        {#% if edit_mode is empty %#}
+            {{ function('wp_head') }}
+        {#% endif %#}
+        <script data-cfasync="false" type="text/javascript">
+            var ajaxurl="{{ ajaxurl }}";
+            var pluginUrl="{{ pluginUrl }}";
+            var currentLayoutId="{{ current_layout_id }}";
+            var currentPostId="{{ current_post_id }}";
+            var dmTypeKitID="{{ SETTING_TYPEKIT_ID }}";
+            var DM_SHOW_PROMO_BANNER={% if DM_SHOW_PROMO_BANNER %}true{% else %}false{% endif %};
+            {% if edit_mode %}
+                var editMode=true;
+            {% else %}
+                var editMode=false;
+            {% endif %}
+            function qardsPostMessageListener(event) {
+                if (event.data) {
+                    try {
+                        data=JSON.parse(event.data);
+                        if (data.hasOwnProperty('parentWindowWidth')&&data.hasOwnProperty('parentWindowHeight')) {
+                            document.body.setAttribute('data-parent-window-width',data.parentWindowWidth);
+                            document.body.setAttribute('data-parent-window-height',data.parentWindowHeight);
+                        }
+                    } catch (e) {
+                    }
+                }
+            }
+            if (window.addEventListener) {
+                addEventListener("message",qardsPostMessageListener,false);
+            } else {
+                attachEvent("onmessage",qardsPostMessageListener);
+            }
+        </script>
+
+        {% if SETTING_TYPEKIT_ID %}
+        <script src="//use.typekit.net/{{ SETTING_TYPEKIT_ID }}.js"></script>
+        <script>try{Typekit.load({async:true});}catch(e){}</script>
+        {% endif %}
+
+        {% if debug_mode %}
+        {% else %}
+        {% endif %}
+
+        {{ compStyles }}
+
+        {% if edit_mode %}
+            <link rel="stylesheet" id="initCSSFile" href="{{ baseUrl }}?action=dm_api&method=component.css.get&params[component_ids]=[{{ current_component_ids|join(',') }}]">
+            <style id="mainCSSFile" type="text/css"></style>
+        {% else %}
+            <link rel="stylesheet" href="{{ baseUrl }}?action=dm_api&method=layout.css.get&params[layout_id]={{ current_layout_id }}">
+        {% endif %}
+
+        <link rel="stylesheet" href="{{ baseUrl }}?action=dm_api&method=settings.globalcss.get">
+        <script type="text/javascript">
+            var editMode = {% if edit_mode %}true{% else %}false{% endif %};
+        </script>
+        {% if edit_mode %}
+        <script type="text/javascript">
+           jQuery(document).ready(function() {
+                var d = new Date();
+                d = d.getTime();
+                if (jQuery('#reloadValue').val().length == 0) {
+                    jQuery('#reloadValue').val(d);
+                    jQuery('body').show();
+                }
+                else {
+                    jQuery('#reloadValue').val('');
+                    location.reload(true);
+                }
+            });
+        </script>
+        {% endif %}
+
+        {% for type in fontList|keys %}
+            {% if type == 'googleFonts' and fontList[type]|length %}
+                <link href='https://fonts.googleapis.com/css?family={% for font in fontList[type] %}{{ font|url_encode }}:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|{% endfor %}&amp;subset=cyrillic,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css' />
+            {% elseif type == 'localFonts' %}
+                {% for font in fontList[type] %}
+                    <link href='{{ pluginUrl }}fonts/{{ font|url_encode(true) }}/{{ font|url_encode(true) }}.css' rel='stylesheet' type='text/css' />
+                {% endfor %}
+            {% elseif type == 'otherFonts' %}
+                {% for font in fontList[type] %}
+                    <link href='{{ font.href }}' rel='stylesheet' type='text/css' />
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+
+        {% if edit_mode is empty %}
+            {% if SETTING_WP_HEAD %}
+                {{ SETTING_WP_HEAD|phpeval }}
+            {% endif %}
+        {% endif %}
+        {% if SETTING_GA_TRACK %}
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', '{{ SETTING_GA_TRACK }}', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+        {% endif %}
+        {% if SETTING_BACKGROUND_CSS %}
+            <style type="text/css">
+                body {
+                    {{SETTING_BACKGROUND_CSS}}
+                    {% if SETTING_BG_IMG %}
+                        background-image: url("{{pluginUrl}}{{SETTING_BG_IMG}}");
+                    {% endif %}
+                }
+            </style>
+        {% endif %}
+    </head>
+    <body {% if edit_mode %} class="edit-mode qards customize-support noscroll" ng-controller="DMCtrl" ng-keydown="keyDown($event)" ng-mouseup="mouseUp($event)" ng-mousedown="click($event)" {% else %} class="qards {{ qards_body_class }}" style="opacity:0"{% endif %}>
+        {% if edit_mode is empty %}
+            {{ SETTING_WP_HEADER|phpeval }}
+        {% endif %}
+
+		{% if edit_mode %}
+		  <style>
+				#mass-preloader{position:fixed;background:#5ec9ff;top:0;left:0;width:100%;height:100%;z-index:9999999;overflow:hidden}
+				.noscroll{overflow:hidden!important;position:static}
+				#mass-preloader.hidePreloader{-webkit-transition:1s .5s cubic-bezier(.6,0,.4,1);-moz-transition:1s .5s cubic-bezier(.6,0,.4,1);-o-transition:1s .5s cubic-bezier(.6,0,.4,1);transition:1s .5s cubic-bezier(.6,0,.4,1);opacity:0}
+				#mass-preloader.hidePreloader #loading-circle{-webkit-transition:.35s .5s cubic-bezier(.6,0,.4,1);-moz-transition:.35s .5s cubic-bezier(.6,0,.4,1);-o-transition:.35s .5s cubic-bezier(.6,0,.4,1);transition:.35s .5s cubic-bezier(.6,0,.4,1);-webkit-transform:scale(1.5);-moz-transform:scale(1.5);-ms-transform:scale(1.5);-o-transform:scale(1.5);transform:scale(1.5);opacity:0}
+				.table{display:table;width:100%;height:100%;position:absolute;top:0;left:0;right:0;border:0}
+				.cell{display:table-cell;vertical-align:middle;text-align:center}
+				#mass-preloader svg{stroke:rgba(255,255,255,1);width:36px;height:36px}
+				#mass-preloader svg .correct{-webkit-transform:translate(18px,18px);-moz-transform:translate(18px,18px);transform:translate(18px,18px)}
+				#mass-preloader svg circle{-webkit-transform:translate(-18px,-18px);-moz-transform:translate(-18px,-18px);transform:translate(-18px,-18px);-webkit-transform-origin:0 0;-moz-transform-origin:0 0;-o-transform-origin:0 0;transform-origin:0 0}
+				#mass-preloader svg .plbg{opacity:.35;-webkit-transition:.5s cubic-bezier(.6,0,.4,1);-moz-transition:.5s cubic-bezier(.6,0,.4,1);-o-transition:.5s cubic-bezier(.6,0,.4,1);transition:.5s cubic-bezier(.6,0,.4,1)}
+				#mass-preloader.hidePreloader svg .plbg{opacity:1}
+				#mass-preloader svg .rotate{-webkit-animation:loadingCirle 2s ease-in-out infinite;-moz-animation:loadingCirle 2s ease-in-out infinite;-o-animation:loadingCirle 2s ease-in-out infinite;animation:loadingCirle 2s ease-in-out infinite}
+				@-webkit-keyframes loadingCirle {0%{stroke-dasharray:0,100;-webkit-transform:rotateZ(45deg) rotateY(0deg);transform:rotateZ(45deg) rotateY(0deg)}49.99%{stroke-dasharray:100,100;-webkit-transform:rotateZ(45deg) rotateY(0deg);transform:rotateZ(45deg) rotateY(0deg)}50%{stroke-dasharray:100,100;-webkit-transform:rotateZ(225deg) rotateY(180deg);transform:rotateZ(225deg) rotateY(180deg)}100%{stroke-dasharray:0,100;-webkit-transform:rotateZ(225deg) rotateY(180deg);transform:rotateZ(225deg) rotateY(180deg)}}
+				@-moz-keyframes loadingCirle {0%{stroke-dasharray:0,100;-moz-transform:rotateZ(45deg) rotateY(0deg);transform:rotateZ(45deg) rotateY(0deg)}49.99%{stroke-dasharray:100,100;-moz-transform:rotateZ(45deg) rotateY(0deg);transform:rotateZ(45deg) rotateY(0deg)}50%{stroke-dasharray:100,100;-moz-transform:rotateZ(225deg) rotateY(180deg);transform:rotateZ(225deg) rotateY(180deg)}100%{stroke-dasharray:0,100;-moz-transform:rotateZ(225deg) rotateY(180deg);transform:rotateZ(225deg) rotateY(180deg)}}
+				@-o-keyframes loadingCirle {0%{stroke-dasharray:0,100;transform:rotateZ(45deg) rotateY(0deg)}49.99%{stroke-dasharray:100,100;transform:rotateZ(45deg) rotateY(0deg)}50%{stroke-dasharray:100,100;transform:rotateZ(225deg) rotateY(180deg)}100%{stroke-dasharray:0,100;transform:rotateZ(225deg) rotateY(180deg)}}
+				@keyframes loadingCirle {0%{stroke-dasharray:0,100;-webkit-transform:rotateZ(45deg) rotateY(0deg);-moz-transform:rotateZ(45deg) rotateY(0deg);transform:rotateZ(45deg) rotateY(0deg)}49.99%{stroke-dasharray:100,100;-webkit-transform:rotateZ(45deg) rotateY(0deg);-moz-transform:rotateZ(45deg) rotateY(0deg);transform:rotateZ(45deg) rotateY(0deg)}50%{stroke-dasharray:100,100;-webkit-transform:rotateZ(225deg) rotateY(180deg);-moz-transform:rotateZ(225deg) rotateY(180deg);transform:rotateZ(225deg) rotateY(180deg)}100%{stroke-dasharray:0,100;-webkit-transform:rotateZ(225deg) rotateY(180deg);-moz-transform:rotateZ(225deg) rotateY(180deg);transform:rotateZ(225deg) rotateY(180deg)}}
+				#loading-circle{-webkit-animation:showup-loading-circle 1s backwards;-moz-animation:showup-loading-circle 1s backwards;-o-animation:showup-loading-circle 1s backwards;animation:showup-loading-circle 1s backwards}
+				@-webkit-keyframes showup-loading-circle {from{opacity:0;filter:alpha(opacity=0);-webkit-transform:scale(0) rotate(-180deg);transform:scale(0) rotate(-180deg)}}
+				@-moz-keyframes showup-loading-circle {from{opacity:0;filter:alpha(opacity=0);-moz-transform:scale(0) rotate(-180deg);transform:scale(0) rotate(-180deg)}}
+				@-o-keyframes showup-loading-circle {from{opacity:0;filter:alpha(opacity=0);-o-transform:scale(0) rotate(-180deg);transform:scale(0) rotate(-180deg)}}
+				@keyframes showup-loading-circle {from{opacity:0;filter:alpha(opacity=0);-webkit-transform:scale(0) rotate(-180deg);-moz-transform:scale(0) rotate(-180deg);-o-transform:scale(0) rotate(-180deg);transform:scale(0) rotate(-180deg)}}
+		  </style>
+		  <script>
+                        jQuery(function(){
+                              var delayFunc = function(callback, time) {
+                                  var startTime = new Date().valueOf();
+                                  time || (time = 0)
+                                  setTimeout(function(){
+                                      var endTime = new Date().valueOf();
+                                      console.log(endTime - startTime);
+                                      if ((endTime - startTime) > (time + 10)) {
+                                          delayFunc(callback, time);
+                                      } else {
+                                          callback();
+                                      }
+                                  }, time);
+                              }
+                              var startFunc = function() {
+                                      delayFunc(function() {
+                                          jQuery('#mass-preloader').addClass('hidePreloader');
+                                          setTimeout(function(){
+                                              jQuery('#mass-preloader').hide();
+                                              jQuery('body').removeClass('noscroll');
+                                          }, 1500);
+                                      }, 1000);
+                                  };
+
+                            jQuery(window).on('load',function(){
+                                startFunc();
+                            });
+
+                        });
+            </script>
+		  <div id="mass-preloader">
+				<div class="table">
+					<div class="cell">
+						<svg id="loading-circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36"><defs><path id="a" d="M0 0v36h36c-.1.1-14-14-14-14l3-3s11.1 16.9 11 17v-36h-36z"/></defs><clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath><g clip-path="url(#b)"><g class="correct"><circle stroke-width="4" class="plbg" stroke-miterlimit="10" cx="18" cy="18" r="16" fill="none"/><g class="rotate"><circle stroke-width="4" class="dash" stroke-linecap="butt" stroke-miterlimit="10" cx="18" cy="18" r="16" fill="none"/></g></g></g><polygon fill="#fff" stroke="0" points="21,21 36,36 31,36 21,26 "/></svg>
+					</div>
+				</div>
+			</div>
+
+        {% endif %}
+
+        {% if edit_mode %}
+            <input id="reloadValue" type="hidden" name="reloadValue" value="" />
+ 				<div id="loader-container"><svg class="saving-icon" version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><path fill="#424242" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z" transform="rotate(320.781 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div>
+
+        <div id="menu">
+            <div id="sideMenu">
+                <ul>
+                    <li data-menu-item="cover">Cover</li>
+                    <li data-menu-item="image">Image</li>
+                    <li data-menu-item="text">Text</li>
+                    <li data-menu-item="feature">Feature</li>
+                    <li data-menu-item="grid">Grid</li>
+                    <li data-menu-item="menu">Menu</li>
+                    <li data-menu-item="footer">Footer</li>
+                    <li data-menu-item="subscribe">Subscribe</li>
+                    <li class="promo-link"><a href="https://designmodo.com/qards/" target="_blank"><img src="{{ pluginUrl }}/img/demo-min.png" /></a></li>
+                </ul>
+            </div>
+            <div id="subMenu" class="invisible"></div>
+            {% if edit_mode %}
+            <div class="dm-widget dm-widget-toggleNav" data-html2canvas-ignore>
+                <div class="dm-widget-item dm-toggle">
+                    <i class="dm-widget-icon">
+                        <svg class="styleable" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" enable-background="new 0 0 16 16">
+                            <path fill="#FFF" d="M15 7h-6v-6c0-.5-.5-1-1-1s-1 .5-1 1v6h-6c-.5 0-1 .5-1 1s.5 1 1 1h6v6c0 .5.5 1 1 1s1-.5 1-1v-6h6c.5 0 1-.5 1-1s-.5-1-1-1z"/>
+                        </svg>
+                    </i>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="topMenu">
+            <div id="startMenu">
+                <a class="all-pages-btn" href="{{ bloginfo('url') }}/wp-admin/edit.php?post_type={{ function('get_post_type') }}">
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+						<circle cx="2" cy="2" r="2"></circle><circle cx="8" cy="2" r="2"></circle><circle cx="14" cy="2" r="2"></circle><circle cx="2" cy="8" r="2"></circle><circle cx="8" cy="8" r="2"></circle><circle cx="14" cy="8" r="2"></circle><circle cx="2" cy="14" r="2"></circle><circle cx="8" cy="14" r="2"></circle><circle cx="14" cy="14" r="2"></circle>
+                    </svg>
+                </a>
+                <div class="title"><input type="edit" value="{{wp_title}}" id="postTitle" placeholder="Enter title" /></div>
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+					 	<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+							<rect y="2" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="12" width="16" height="2"></rect>
+						</svg>
+					 </a>
+                <ul class="dropdown-menu btns-right" role="menu" aria-labelledby="dLabel">
+                    <li><a id="previewLayout" href="#">Preview</a></li>
+                    <li>
+                        <div class="dm-save-holder">
+                            <a href="#" class="dm-save disabled" id="saveChanges">Save</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="previewMenu" class="disabledMenu">
+                <a class="arrow-btn" id="previewBack" href="#">
+					 	<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"><polyline stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" points="10,2 1,11 10,20"/><line stroke-width="2" stroke-linejoin="round" stroke-miterlimit="10" x1="21" y1="11" x2="2" y2="11"/></svg><span>Back to Edit</span>
+					 </a>
+                <div class="title">{{wp_title}}</div>
+                <span class="show-preview-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><ellipse cx="2" cy="8" rx="2" ry="2"/><ellipse cx="8" cy="8" rx="2" ry="2"/><circle cx="14" cy="8" r="2"/></svg>
+                    <a class="preview-inner-button" href="#" target="blank">Open in New Tab</a>
+                </span>
+            </div>
+        </div>
+        <div class="boxes-wrapper">
+            <div class="boxes">
+                <div class="top-boxes">
+                    <div class="top-boxes-inner">
+                        <div class="top-boxes-spacer"></div>
+                        <div class="boxes-top-header">
+                            <div class="boxes-top-header-inner">
+                                <a class="back" id="editingBack">
+                                    <svg width="22px" height="20px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <g transform="translate(-18.000000, -24.000000)" stroke-width="2" stroke="#ffffff">
+                                                <g transform="translate(20.000000, 25.000000)">
+                                                    <path d="M8.57142857,0 L0,9 L8.57142857,18"></path>
+                                                    <path d="M20,9 L0,9"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </a>
+                                <a class="button uplade-preview" id="updatePreview" title="Ctrl + S">Update Preview</a>
+                                <a class="button save" id="editingSave">Save</a>
+                            </div>
+                        </div>
+                        <div class="box-holder">
+                            <div id="box-css" class="box box-css">
+                                <h3 class="sub-title">Add CSS</h3>
+                                <div class="box-spacer"></div>
+                                <div class="code-wrap" id="editingCSSHolder"></div>
+                            </div>
+                        </div>
+                        <div class="editor-resizer-holder">
+                            <div class="editor-resizer" id="editor-resizer-html"></div>
+                        </div>
+                        <div class="box-holder">
+                            <div id="box-html" class="box box-html">
+                                <div class="edit-html-confirm">
+                                    If you change HTML you can't use inline editing of the block.
+                                    <ul class="btns">
+                                        <li><a class="hide-confirm-tooltip">Cancel</a></li>
+                                        <li><a class="edit-html">Edit HTML</a></li>
+                                    </ul>
+                                </div>
+                                <h3 class="sub-title">
+                                    Edit HTML
+                                    <svg class="lock-edit-html" width="14px" height="15px" viewBox="0 0 14 15" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <g transform="translate(-120.000000, -853.000000)" stroke="#FFFFFF" stroke-width="1.5">
+                                                <g transform="translate(121.000000, 854.000000)">
+                                                    <rect x="0" y="6" width="12" height="7"></rect>
+                                                    <path d="M2,6 L2,4 C2,1.791 3.791,0 6,0 C8.209,0 10,1.791 10,4 L10,6"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </h3>
+                                <div class="box-spacer"></div>
+                                <div class="code-wrap" id="editingHTMLHolder"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="resizer" class="resizer"><span></span></div>
+                <div id="result_div" class="result">
+                    <div class="result-inner">
+                        <div class="result-spacer"></div>
+                        <iframe allowfullscreen="true" sandbox="allow-scripts allow-pointer-lock allow-same-origin allow-popups allow-forms" allowtransparency="true"></iframe>
+                        <div class="show-size"></div>
+                        <div class="temp-component"></div>
+                        <div id="editor-drag-cover" class="drag-cover"></div>
+                        <div id="loading-iframe"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+        <div class="designmodo-wrapper {{qards_body_class}}">
+            <div id="templates">
